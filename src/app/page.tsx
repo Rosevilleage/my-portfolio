@@ -1,4 +1,4 @@
-import SpinCircle from "@/components/main/SpinCircle";
+import SpinCircle from "@/components/desktop/symbol/SpinCircle";
 
 export default function Home() {
   return (

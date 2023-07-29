@@ -1,6 +1,6 @@
 import { CircleProps, centerPosition } from "./CircleConfig";
 
-export default function CenterSimbol({ svgAnimate, divClass }: CircleProps) {
+export default function CenterIcon({ svgAnimate, divClass }: CircleProps) {
   const divCl = divClass ? divClass : "";
   const svgCl = svgAnimate ? svgAnimate : "";
   return (
