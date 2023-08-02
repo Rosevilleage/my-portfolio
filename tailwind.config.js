@@ -11,6 +11,8 @@ module.exports = {
     },
     minHeight: {
       mac: "783px",
+      screen: "100vh",
+      full: "100%",
     },
     extend: {
       backgroundImage: {

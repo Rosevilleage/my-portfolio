@@ -45,7 +45,7 @@ export function updateBrowserConfig(input: SetConfigDate) {
         x: inrange(x + interval.x, 0, x + w - MIN_W),
         y,
         w: inrange(w - interval.x, MIN_W, x + w),
-        h: inrange(h - interval.y, MIN_H, viewport.h - y),
+        h: inrange(h + interval.y, MIN_H, viewport.h - y),
       };
     case "n":
       return {
@@ -66,20 +66,13 @@ export function updateBrowserConfig(input: SetConfigDate) {
         x,
         y,
         w,
-        h: inrange(h + interval.y, MIN_H, viewport.h - y),
+        h: inrange(h + interval.y, MIN_H, viewport.h - y + DESKTOP_MT),
       };
     case "w":
       return {
         x: inrange(x + interval.x, 0, x + w - MIN_W),
         y,
         w: inrange(w - interval.x, MIN_W, x + w),
-        h,
-      };
-    case "mv":
-      return {
-        x: inrange(x + interval.x, 0, viewport.w - w),
-        y: inrange(y + interval.y, DESKTOP_MT, viewport.h - h),
-        w,
         h,
       };
   }
