@@ -19,9 +19,9 @@ export default function Circle05({ svgAnimate, divClass }: CircleProps) {
             cy="153"
             r="146"
             stroke="#DCEFF4"
-            stroke-width="6"
-            stroke-dasharray="12 12"
-            shape-rendering="crispEdges"
+            strokeWidth="6"
+            strokeDasharray="12 12"
+            shapeRendering="crispEdges"
           />
         </g>
         <defs>
@@ -32,9 +32,9 @@ export default function Circle05({ svgAnimate, divClass }: CircleProps) {
             width="306"
             height="306"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"

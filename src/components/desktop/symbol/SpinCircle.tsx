@@ -1,5 +1,3 @@
-"use client";
-
 import CenterIcon from "./CenterIcon";
 import Circle01 from "./Circle01";
 import Circle02 from "./Circle02";
