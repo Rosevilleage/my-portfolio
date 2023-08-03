@@ -24,17 +24,16 @@ interface BrowserConfig {
   h: number;
 }
 
-interface Viewport {
+interface MoveBoundary {
   w: number;
   h: number;
 }
 
 interface BrowserTransformation {
   transformation: {
-    browserConfig: BrowserConfig;
     direction: Direction;
-    setBrowserConfig: React.Dispatch<React.SetStateAction<BrowserConfig>>;
-    viewport: Viewport;
+
+    moveBoundary: MoveBoundary;
   };
 }
 
@@ -47,4 +46,4 @@ export {
   DESKTOP_MT,
   RESIZERSTYLE,
 };
-export type { Direction, BrowserConfig, Viewport, BrowserTransformation };
+export type { Direction, BrowserConfig, MoveBoundary, BrowserTransformation };

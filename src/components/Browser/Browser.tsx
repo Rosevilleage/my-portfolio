@@ -2,39 +2,42 @@
 // need utill function: dragMouseDown, inrange
 
 import React, { useEffect, useState } from "react";
-import { AZIMUTH, DEFUALT_H, DEFUALT_W, DESKTOP_MT } from "./config";
+import { AZIMUTH, DEFUALT_H, DEFUALT_W } from "./config";
 import BrowserResizer from "./BrowserResizer";
 import TopBar from "./topbar/TopBar";
-
-export default function Browser() {
-  const [browserConfig, setBrowserConfig] = useState({
-    x: 0,
-    y: 0,
-    w: 0,
-    h: 0,
-  });
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { setBrowserConfig } from "@/redux/slices/browserConfigSlice";
+interface BrowserProps {
+  boundaryCur: HTMLDivElement | null;
+}
+export default function Browser({ boundaryCur }: BrowserProps) {
+  const browserConfig = useAppSelector((state) => state.browserConfig);
   const { x, y, w, h } = browserConfig;
-  const [viewport, setViewport] = useState({ w: 0, h: 0 });
+  const dispatch = useAppDispatch();
+
+  const [moveBoundary, setMoveBoundary] = useState({ w: 0, h: 0 });
+
+  const boundary = boundaryCur?.getBoundingClientRect();
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setViewport({
-        w: window.innerWidth,
-        h: window.innerHeight,
+    if (boundary && typeof window !== "undefined") {
+      const { width, height } = boundary;
+
+      setMoveBoundary({
+        w: width,
+        h: height,
       });
 
-      setBrowserConfig({
-        x: Math.floor(viewport.w / 2 - DEFUALT_W / 2),
-        y: Math.floor(viewport.h / 2 - DEFUALT_H / 2),
-        w: DEFUALT_W,
-        h: DEFUALT_H,
-      });
+      dispatch(
+        setBrowserConfig({
+          x: Math.floor(width / 2 - DEFUALT_W / 2),
+          y: Math.floor(height / 2 - DEFUALT_H / 2),
+          w: DEFUALT_W,
+          h: DEFUALT_H,
+        })
+      );
     }
-  }, [viewport.h, viewport.w]);
-  const material = {
-    browserConfig,
-    setBrowserConfig,
-    viewport,
-  };
+  }, [dispatch, boundary?.width, boundary?.height]);
+
   return (
     <>
       <div
@@ -43,16 +46,14 @@ export default function Browser() {
       >
         {/* BrowserViewport */}
         <div className="h-full w-full rounded-xl bg-white shadow-xl ring-1 ring-slate-600 transition-[shadow,transform] overflow-x-hidden overflow-y-scroll">
-          <TopBar material={material} />
+          <TopBar moveBoundary={moveBoundary} />
           {/* fallback component */}
         </div>
         {/* BrowserResizer */}
         {AZIMUTH.map((direction) => {
           const transformation = {
-            browserConfig,
             direction,
-            setBrowserConfig,
-            viewport,
+            moveBoundary,
           };
           return (
             <BrowserResizer key={direction} transformation={transformation} />

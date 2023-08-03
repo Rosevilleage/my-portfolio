@@ -17,10 +17,10 @@ const browserConfigSlice = createSlice({
   name: "browserConfig",
   initialState,
   reducers: {
-    setConfig: (state, action: PayloadAction<BrowserState>) => {
-      state = action.payload;
+    setBrowserConfig: (state, action: PayloadAction<BrowserState>) => {
+      return action.payload;
     },
   },
 });
-export const { setConfig } = browserConfigSlice.actions;
+export const { setBrowserConfig } = browserConfigSlice.actions;
 export default browserConfigSlice.reducer;

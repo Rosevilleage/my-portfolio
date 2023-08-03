@@ -2,12 +2,15 @@
 import dragMouseDown from "@/utills/dragMouseDown";
 import { RESIZERSTYLE, BrowserTransformation } from "./config";
 import { updateBrowserConfig } from "@/utills/updateBrowserConfig";
+import { setBrowserConfig } from "@/redux/slices/browserConfigSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 export default function BrowserResizer({
   transformation,
 }: BrowserTransformation) {
-  const { direction, setBrowserConfig, viewport, browserConfig } =
-    transformation;
+  const { direction, moveBoundary } = transformation;
+  const browserConfig = useAppSelector((state) => state.browserConfig);
+  const dispatch = useAppDispatch();
   return (
     <div
       className={"absolute " + RESIZERSTYLE[direction]}
@@ -16,9 +19,9 @@ export default function BrowserResizer({
           direction,
           browserConfig,
           interval: { x: X, y: Y },
-          viewport,
+          moveBoundary,
         };
-        setBrowserConfig(updateBrowserConfig(input));
+        dispatch(setBrowserConfig(updateBrowserConfig(input)));
       }, true)}
     />
   );

@@ -4,6 +4,7 @@ import {
   DESKTOP_MT,
   MIN_H,
   Direction,
+  MoveBoundary,
 } from "@/components/Browser/config";
 
 import { inrange } from "./inrange";
@@ -12,12 +13,13 @@ export interface SetConfigDate {
   direction: Direction;
   browserConfig: BrowserConfig;
   interval: { x: number; y: number };
-  viewport: { w: number; h: number };
+  moveBoundary: MoveBoundary;
 }
 
 export function updateBrowserConfig(input: SetConfigDate) {
-  const { direction, browserConfig, interval, viewport } = input;
+  const { direction, browserConfig, interval, moveBoundary } = input;
   const { x, y, w, h } = browserConfig;
+
   switch (direction) {
     case "nw":
       return {
@@ -30,22 +32,22 @@ export function updateBrowserConfig(input: SetConfigDate) {
       return {
         x,
         y: inrange(y + interval.y, DESKTOP_MT, y + h - MIN_H),
-        w: inrange(w + interval.x, MIN_W, viewport.w - x),
+        w: inrange(w + interval.x, MIN_W, moveBoundary.w - x),
         h: inrange(h - interval.y, MIN_H, y + h - DESKTOP_MT),
       };
     case "se":
       return {
         x,
         y,
-        w: inrange(w + interval.x, MIN_W, viewport.w - x),
-        h: inrange(h + interval.y, MIN_H, viewport.h - y),
+        w: inrange(w + interval.x, MIN_W, moveBoundary.w - x),
+        h: inrange(h + interval.y, MIN_H, moveBoundary.h - y),
       };
     case "sw":
       return {
         x: inrange(x + interval.x, 0, x + w - MIN_W),
         y,
         w: inrange(w - interval.x, MIN_W, x + w),
-        h: inrange(h + interval.y, MIN_H, viewport.h - y),
+        h: inrange(h + interval.y, MIN_H, moveBoundary.h - y),
       };
     case "n":
       return {
@@ -58,7 +60,7 @@ export function updateBrowserConfig(input: SetConfigDate) {
       return {
         x,
         y,
-        w: inrange(w + interval.x, MIN_W, viewport.w - x),
+        w: inrange(w + interval.x, MIN_W, moveBoundary.w - x),
         h,
       };
     case "s":
@@ -66,7 +68,7 @@ export function updateBrowserConfig(input: SetConfigDate) {
         x,
         y,
         w,
-        h: inrange(h + interval.y, MIN_H, viewport.h - y + DESKTOP_MT),
+        h: inrange(h + interval.y, MIN_H, moveBoundary.h - y),
       };
     case "w":
       return {

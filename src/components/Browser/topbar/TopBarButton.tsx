@@ -17,13 +17,23 @@ const DefaultBtnStyle =
 
 interface TopBarButtonProps {
   color: "red" | "yellow" | "green";
-  handler?: TopBarProps;
+  browserButtonHandler: {
+    green: () => void;
+    red: () => void;
+    yellow: () => void;
+  };
 }
 
-export default function TopBarButton({ color }: TopBarButtonProps) {
+export default function TopBarButton({
+  color,
+  browserButtonHandler,
+}: TopBarButtonProps) {
   const iconSize = "14";
   return (
-    <button className={DefaultBtnStyle + colorStyle[color]}>
+    <button
+      className={DefaultBtnStyle + colorStyle[color]}
+      onClick={browserButtonHandler[color]}
+    >
       {color === "red" && <AiOutlineClose size={iconSize} />}
       {color === "yellow" && <AiOutlineMinus size={iconSize} />}
       {color === "green" && <AiOutlineArrowsAlt size={iconSize} />}
