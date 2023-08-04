@@ -24,9 +24,9 @@ export default function TopBar({ moveBoundary }: TopBarProps) {
     dispatch(
       setBrowserConfig({
         x: 0,
-        y: DESKTOP_MT,
+        y: 0,
         w: moveBoundary.w,
-        h: moveBoundary.h - DESKTOP_MT,
+        h: moveBoundary.h,
       })
     );
   };
@@ -52,7 +52,7 @@ export default function TopBar({ moveBoundary }: TopBarProps) {
         dispatch(
           setBrowserConfig({
             x: inrange(x + X, 0, moveBoundary.w - w),
-            y: inrange(y + Y, DESKTOP_MT, moveBoundary.h - h),
+            y: inrange(y + Y, 0, moveBoundary.h - h),
             w,
             h,
           })

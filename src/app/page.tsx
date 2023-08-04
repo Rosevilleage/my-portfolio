@@ -4,8 +4,9 @@ import SpinCircle from "@/components/desktop/symbol/SpinCircle";
 
 export default function Home() {
   return (
-    <main className="relative w-full bg-slate-700">
+    <main className="box-border relative w-full h-screen bg-slate-700">
       <SpinCircle />
+
       <DesktopBoundary />
     </main>
   );
