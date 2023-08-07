@@ -1,7 +1,6 @@
 import {
   BrowserConfig,
   MIN_W,
-  DESKTOP_MT,
   MIN_H,
   Direction,
   MoveBoundary,
