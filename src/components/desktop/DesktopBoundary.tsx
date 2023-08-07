@@ -15,7 +15,6 @@ export default function DesktopBoundary() {
       className="relative w-full h-[calc(100%-65px)] overflow-hidden"
       ref={boundaryRef}
     >
-      <p className=" text-slate-200">{`${isOpenApp.about}`}</p>
       {APPList.map(
         (app) =>
           isOpenApp[app] && (
