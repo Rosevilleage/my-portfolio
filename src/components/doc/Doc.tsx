@@ -11,11 +11,13 @@ export default function Doc() {
   const isHiddenApp = useAppSelector((state) => state.isHiddenApp);
   const isOpenApp = useAppSelector((state) => state.isOpenApp);
   const dispatch = useAppDispatch();
+
   const appClickHandler = (title: AppTitle) => {
     if (isOpenApp[title]) {
       if (isHiddenApp[title]) dispatch(veiwApp(title));
     } else dispatch(openApp(title));
   };
+
   const hiddenAppClickHandler = (title: AppTitle) => {
     dispatch(veiwApp(title));
   };

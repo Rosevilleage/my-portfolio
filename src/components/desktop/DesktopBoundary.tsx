@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Browser from "../Browser/Browser";
-import { APPList, CONTENTS, CONTENTS_LENG } from "./config";
+import { APPList } from "./config";
 import { useAppSelector } from "@/redux/hooks";
 
 export default function DesktopBoundary() {

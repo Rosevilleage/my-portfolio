@@ -32,8 +32,9 @@ interface MoveBoundary {
 interface BrowserTransformation {
   transformation: {
     direction: Direction;
-
-    moveBoundary: MoveBoundary;
+    resizeHandle: {
+      onMouseDown: (e: React.MouseEvent<Element, MouseEvent>) => void;
+    };
   };
 }
 
