@@ -1,4 +1,4 @@
-import { Title } from "./App";
+import { AppTitle } from "@/redux/slices/openAppSlice";
 import Image from "next/image";
 
 const HIDENAPPIMAGE = {
@@ -9,14 +9,22 @@ const HIDENAPPIMAGE = {
 };
 
 interface HiddenProps {
-  title: Title;
+  title: AppTitle;
   isHidden: boolean;
+  hiddenAppClickHandler: (title: AppTitle) => void;
 }
-export default function HiddenApp({ title, isHidden }: HiddenProps) {
+export default function HiddenApp({
+  title,
+  isHidden,
+  hiddenAppClickHandler,
+}: HiddenProps) {
   return (
     <>
       {isHidden && (
-        <div className="ml-2 cursor-pointer">
+        <div
+          className="ml-2 cursor-pointer"
+          onClick={() => hiddenAppClickHandler(title)}
+        >
           <Image
             src={HIDENAPPIMAGE[title]}
             width={50}

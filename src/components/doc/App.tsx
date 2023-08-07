@@ -1,3 +1,4 @@
+import { AppTitle } from "@/redux/slices/openAppSlice";
 import Image from "next/image";
 
 const APPIMAGES = {
@@ -6,15 +7,16 @@ const APPIMAGES = {
   todo: "/images/list.png",
   portfolio: "/images/portfolio.png",
 };
-export type Title = "about" | "cocktail" | "todo" | "portfolio";
+
 interface AppProps {
-  title: Title;
+  title: AppTitle;
   isOpen: boolean;
+  appClickHandler: (title: AppTitle) => void;
 }
 
-export default function App({ title, isOpen }: AppProps) {
+export default function App({ title, isOpen, appClickHandler }: AppProps) {
   return (
-    <div className="cursor-pointer ">
+    <div className="cursor-pointer" onClick={() => appClickHandler(title)}>
       <Image
         src={APPIMAGES[title]}
         width={35}
