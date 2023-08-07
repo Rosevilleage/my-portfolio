@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const hiddenAppSlice = createSlice({
-  name: "openApp",
+  name: "hiddenApp",
   initialState,
   reducers: {
     veiwApp: (state, action) => {
