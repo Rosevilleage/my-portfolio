@@ -5,8 +5,7 @@ import App from "./App";
 import HiddenApp from "./HiddenApp";
 import { AppTitle, openApp } from "@/redux/slices/openAppSlice";
 import { veiwApp } from "@/redux/slices/hiddenAppSlice";
-
-const APPList = ["about", "cocktail", "todo", "portfolio"] as const;
+import { APPList } from "../desktop/config";
 
 export default function Doc() {
   const isHiddenApp = useAppSelector((state) => state.isHiddenApp);
@@ -40,6 +39,7 @@ export default function Doc() {
             key={app}
             title={app}
             isHidden={isHiddenApp[app]}
+            isOpen={isOpenApp[app]}
             hiddenAppClickHandler={hiddenAppClickHandler}
           />
         ))}

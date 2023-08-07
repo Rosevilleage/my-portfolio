@@ -11,16 +11,18 @@ const HIDENAPPIMAGE = {
 interface HiddenProps {
   title: AppTitle;
   isHidden: boolean;
+  isOpen: boolean;
   hiddenAppClickHandler: (title: AppTitle) => void;
 }
 export default function HiddenApp({
   title,
   isHidden,
+  isOpen,
   hiddenAppClickHandler,
 }: HiddenProps) {
   return (
     <>
-      {isHidden && (
+      {isHidden && isOpen && (
         <div
           className="ml-2 cursor-pointer"
           onClick={() => hiddenAppClickHandler(title)}

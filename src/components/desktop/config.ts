@@ -7,4 +7,6 @@ const CONTENTS = {
 
 const CONTENTS_LENG = 4;
 
-export { CONTENTS, CONTENTS_LENG };
+const APPList = ["about", "cocktail", "todo", "portfolio"] as const;
+
+export { CONTENTS, CONTENTS_LENG, APPList };

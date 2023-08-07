@@ -7,10 +7,12 @@ import BrowserResizer from "./BrowserResizer";
 import TopBar from "./topbar/TopBar";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setBrowserConfig } from "@/redux/slices/browserConfigSlice";
+import { AppTitle } from "@/redux/slices/openAppSlice";
 interface BrowserProps {
   boundaryCur: HTMLDivElement | null;
+  title: AppTitle;
 }
-export default function Browser({ boundaryCur }: BrowserProps) {
+export default function Browser({ boundaryCur, title }: BrowserProps) {
   const browserConfig = useAppSelector((state) => state.browserConfig);
   const { x, y, w, h } = browserConfig;
   const dispatch = useAppDispatch();
@@ -46,7 +48,7 @@ export default function Browser({ boundaryCur }: BrowserProps) {
       >
         {/* BrowserViewport */}
         <div className="h-full w-full rounded-xl bg-white shadow-xl ring-1 ring-slate-600 transition-[shadow,transform] overflow-x-hidden overflow-y-scroll">
-          <TopBar moveBoundary={moveBoundary} />
+          <TopBar moveBoundary={moveBoundary} title={title} />
           {/* fallback component */}
         </div>
         {/* BrowserResizer */}

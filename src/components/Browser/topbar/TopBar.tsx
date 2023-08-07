@@ -1,19 +1,22 @@
 "use client";
 import dragMouseDown from "@/utills/dragMouseDown";
-import { DESKTOP_MT, MoveBoundary } from "../config";
+import { MoveBoundary } from "../config";
 import TopBarButton from "./TopBarButton";
 
 import { inrange } from "@/utills/inrange";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setBrowserConfig } from "@/redux/slices/browserConfigSlice";
+import { AppTitle, closeApp } from "@/redux/slices/openAppSlice";
+import { hiddenApp, veiwApp } from "@/redux/slices/hiddenAppSlice";
 
 export interface TopBarProps {
   moveBoundary: MoveBoundary;
+  title: AppTitle;
 }
 
 const ButtonColors = ["red", "yellow", "green"] as const;
 
-export default function TopBar({ moveBoundary }: TopBarProps) {
+export default function TopBar({ moveBoundary, title }: TopBarProps) {
   // create button handler or props drilling
   // button handler object
   const browserConfig = useAppSelector((state) => state.browserConfig);
@@ -33,10 +36,13 @@ export default function TopBar({ moveBoundary }: TopBarProps) {
 
   const onCloseHandler = () => {
     // browser open state false
+    dispatch(closeApp(title));
+    dispatch(veiwApp(title));
   };
 
   const onHideHandler = () => {
     // browser hiden state true
+    dispatch(hiddenApp(title));
   };
   const browserButtonHandler = {
     green: onFullScreenHandler,
