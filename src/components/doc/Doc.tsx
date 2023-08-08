@@ -6,6 +6,7 @@ import HiddenApp from "./HiddenApp";
 import { AppTitle, openApp } from "@/redux/slices/openAppSlice";
 import { veiwApp } from "@/redux/slices/hiddenAppSlice";
 import { APPList } from "../desktop/config";
+import { bringFront } from "@/redux/slices/zIndexSlice";
 
 export default function Doc() {
   const isHiddenApp = useAppSelector((state) => state.isHiddenApp);
@@ -15,7 +16,10 @@ export default function Doc() {
   const appClickHandler = (title: AppTitle) => {
     if (isOpenApp[title]) {
       if (isHiddenApp[title]) dispatch(veiwApp(title));
-    } else dispatch(openApp(title));
+    } else {
+      dispatch(openApp(title));
+    }
+    dispatch(bringFront(title));
   };
 
   const hiddenAppClickHandler = (title: AppTitle) => {

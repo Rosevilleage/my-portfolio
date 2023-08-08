@@ -4,6 +4,7 @@ import TopBarButton from "./TopBarButton";
 import { useAppDispatch } from "@/redux/hooks";
 import { AppTitle, closeApp } from "@/redux/slices/openAppSlice";
 import { hiddenApp, veiwApp } from "@/redux/slices/hiddenAppSlice";
+import { deleteZIndex } from "@/redux/slices/zIndexSlice";
 
 export interface TopBarProps {
   title: AppTitle;
@@ -25,6 +26,7 @@ export default function TopBar({
     // browser open state false
     dispatch(closeApp(title));
     dispatch(veiwApp(title));
+    dispatch(deleteZIndex(title));
   };
 
   const onHideHandler = () => {
