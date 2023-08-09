@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { AppTitle } from "./openAppSlice";
 
 const initialState = {
   about: false,
@@ -11,7 +12,7 @@ const hiddenAppSlice = createSlice({
   name: "hiddenApp",
   initialState,
   reducers: {
-    veiwApp: (state, action) => {
+    veiwApp: (state, action: PayloadAction<AppTitle>) => {
       switch (action.payload) {
         case "about":
           state.about = false;
@@ -27,7 +28,7 @@ const hiddenAppSlice = createSlice({
           break;
       }
     },
-    hiddenApp: (state, action) => {
+    hiddenApp: (state, action: PayloadAction<AppTitle>) => {
       switch (action.payload) {
         case "about":
           state.about = true;
