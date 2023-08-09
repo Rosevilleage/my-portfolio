@@ -4,7 +4,7 @@ import Image from "next/image";
 const APPIMAGES = {
   about: "/images/about.png",
   cocktail: "/images/cocktail.png",
-  todo: "/images/list.png",
+  todo: "/images/todo.png",
   portfolio: "/images/portfolio.png",
 };
 

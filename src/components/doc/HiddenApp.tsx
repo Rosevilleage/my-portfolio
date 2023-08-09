@@ -4,7 +4,7 @@ import Image from "next/image";
 const HIDENAPPIMAGE = {
   about: "/images/aboutHidden.png",
   cocktail: "/images/cocktailHidden.png",
-  todo: "/images/listHidden.png",
+  todo: "/images/todoHidden.png",
   portfolio: "/images/portfolioHidden.png",
 };
 
