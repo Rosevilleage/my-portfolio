@@ -4,6 +4,7 @@ import {
   MIN_H,
   Direction,
   MoveBoundary,
+  DESKTOP_MB,
 } from "@/components/Browser/config";
 
 import { inrange } from "./inrange";
@@ -39,14 +40,14 @@ export function updateBrowserConfig(input: SetConfigDate) {
         x,
         y,
         w: inrange(w + interval.x, MIN_W, moveBoundary.w - x),
-        h: inrange(h + interval.y, MIN_H, moveBoundary.h - y),
+        h: inrange(h + interval.y, MIN_H, moveBoundary.h - y - DESKTOP_MB),
       };
     case "sw":
       return {
         x: inrange(x + interval.x, 0, x + w - MIN_W),
         y,
         w: inrange(w - interval.x, MIN_W, x + w),
-        h: inrange(h + interval.y, MIN_H, moveBoundary.h - y),
+        h: inrange(h + interval.y, MIN_H, moveBoundary.h - y - DESKTOP_MB),
       };
     case "n":
       return {
@@ -67,7 +68,7 @@ export function updateBrowserConfig(input: SetConfigDate) {
         x,
         y,
         w,
-        h: inrange(h + interval.y, MIN_H, moveBoundary.h - y),
+        h: inrange(h + interval.y, MIN_H, moveBoundary.h - y - DESKTOP_MB),
       };
     case "w":
       return {

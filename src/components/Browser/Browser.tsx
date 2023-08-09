@@ -4,9 +4,9 @@ import React from "react";
 import { AZIMUTH } from "./config";
 import BrowserResizer from "./BrowserResizer";
 import TopBar from "./topbar/TopBar";
-import { AppTitle } from "@/redux/slices/openAppSlice";
+import { AppState, AppTitle } from "@/redux/slices/openAppSlice";
 import useBrowser from "@/utills/useBrowser";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { bringFront } from "@/redux/slices/zIndexSlice";
 
 interface BrowserProps {
@@ -25,8 +25,13 @@ export default function Browser({ boundaryCur, title, zIndex }: BrowserProps) {
     moveHandler,
   } = useBrowser(boundaryCur);
   const { x, y, w, h } = browserConfig;
-  const dispatch = useAppDispatch();
 
+  const dispatch = useAppDispatch();
+  const isFullscreen = useAppSelector((state) => state.fullScreen);
+
+  const browserStyle = isFullscreen[title]
+    ? ""
+    : "rounded-xl ring-1 ring-slate-600";
   return (
     <>
       <div
@@ -35,24 +40,31 @@ export default function Browser({ boundaryCur, title, zIndex }: BrowserProps) {
         onClick={() => dispatch(bringFront(title))}
       >
         {/* BrowserViewport */}
-        <div className="h-full w-full rounded-xl bg-white shadow-xl ring-1 ring-slate-600 transition-[shadow,transform] overflow-x-hidden overflow-y-scroll">
+        <div
+          className={
+            "h-full w-full  bg-white shadow-xl transition-[shadow,transform] overflow-x-hidden overflow-y-scroll " +
+            browserStyle
+          }
+        >
           <TopBar
             title={title}
             maximizeHandler={maximizeHandler}
-            moveHandler={moveHandler}
+            initializeHandler={initializeHandler}
+            moveHandler={moveHandler()}
           />
           {/* fallback component */}
         </div>
         {/* BrowserResizer */}
-        {AZIMUTH.map((direction) => {
-          const transformation = {
-            direction,
-            resizeHandle: resizeHandler(direction),
-          };
-          return (
-            <BrowserResizer key={direction} transformation={transformation} />
-          );
-        })}
+        {!isFullscreen &&
+          AZIMUTH.map((direction) => {
+            const transformation = {
+              direction,
+              resizeHandle: resizeHandler(direction),
+            };
+            return (
+              <BrowserResizer key={direction} transformation={transformation} />
+            );
+          })}
       </div>
     </>
   );

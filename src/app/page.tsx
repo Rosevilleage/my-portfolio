@@ -8,7 +8,6 @@ export default function Home() {
     <main className="box-border relative w-full h-screen bg-slate-700">
       <SpinCircle />
       <DesktopBoundary />
-      <Doc />
     </main>
   );
 }
