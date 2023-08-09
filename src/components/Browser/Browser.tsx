@@ -4,7 +4,7 @@ import React from "react";
 import { AZIMUTH } from "./config";
 import BrowserResizer from "./BrowserResizer";
 import TopBar from "./topbar/TopBar";
-import { AppState, AppTitle } from "@/redux/slices/openAppSlice";
+import { AppTitle } from "@/redux/slices/openAppSlice";
 import useBrowser from "@/utills/useBrowser";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { bringFront } from "@/redux/slices/zIndexSlice";
@@ -13,14 +13,19 @@ interface BrowserProps {
   boundaryCur: HTMLDivElement | null;
   title: AppTitle;
   zIndex: number | undefined;
+  isHidden: boolean;
 }
 
-export default function Browser({ boundaryCur, title, zIndex }: BrowserProps) {
+export default function Browser({
+  boundaryCur,
+  title,
+  zIndex,
+  isHidden,
+}: BrowserProps) {
   const {
     browserConfig,
     resizeHandler,
     maximizeHandler,
-    minimizeHandler,
     initializeHandler,
     moveHandler,
   } = useBrowser(boundaryCur);
@@ -32,18 +37,27 @@ export default function Browser({ boundaryCur, title, zIndex }: BrowserProps) {
   const browserStyle = isFullscreen[title]
     ? ""
     : "rounded-xl ring-1 ring-slate-600";
+
+  const browserHiddenSyle = isHidden ? " scale-0 translate-y-[100vh] " : "";
   return (
     <>
       <div
         className="absolute "
-        style={{ left: x, top: y, width: w, height: h, zIndex: zIndex || 1 }}
+        style={{
+          left: x,
+          top: y,
+          width: w,
+          height: h,
+          zIndex: zIndex || 1,
+        }}
         onClick={() => dispatch(bringFront(title))}
       >
         {/* BrowserViewport */}
         <div
           className={
-            "h-full w-full  bg-white shadow-xl transition-[shadow,transform] overflow-x-hidden overflow-y-scroll " +
-            browserStyle
+            "h-full w-full bg-white shadow-xl transition-all overflow-x-hidden overflow-y-scroll duration-300 " +
+            browserStyle +
+            browserHiddenSyle
           }
         >
           <TopBar

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Browser from "../Browser/Browser";
 import { APPList } from "./config";
 import { useAppSelector } from "@/redux/hooks";
@@ -13,6 +13,7 @@ export default function DesktopBoundary() {
 
   const isOpenApp = useAppSelector((state) => state.isOpenApp);
   const zIndexArr = useAppSelector((state) => state.zIndex);
+  const isHiddenApp = useAppSelector((state) => state.isHiddenApp);
 
   const getBrowserZIndex = (title: AppTitle) => {
     const zindex = zIndexArr.indexOf(title);
@@ -29,6 +30,7 @@ export default function DesktopBoundary() {
               boundaryCur={boundaryCur}
               title={app}
               zIndex={getBrowserZIndex(app)}
+              isHidden={isHiddenApp[app]}
             />
           )
       )}

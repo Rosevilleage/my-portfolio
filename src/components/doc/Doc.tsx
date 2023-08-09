@@ -39,6 +39,7 @@ export default function Doc() {
   };
 
   const hiddenAppClickHandler = (title: AppTitle) => {
+    dispatch(bringFront(title));
     dispatch(veiwApp(title));
   };
 
