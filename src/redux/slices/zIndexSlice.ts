@@ -26,5 +26,3 @@ const zIndexSlice = createSlice({
 export const { bringFront, deleteZIndex } = zIndexSlice.actions;
 
 export default zIndexSlice.reducer;
-
-// [a,b,c,d] (b) => [a,c,d,b]
