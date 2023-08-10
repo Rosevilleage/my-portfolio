@@ -33,31 +33,33 @@ export default function Browser({
 
   const dispatch = useAppDispatch();
   const isFullscreen = useAppSelector((state) => state.fullScreen);
+  const browserAnimate = useAppSelector((state) => state.browserAnimate);
 
   const browserStyle = isFullscreen[title]
     ? ""
     : "rounded-xl ring-1 ring-slate-600";
 
-  const browserHiddenSyle = isHidden ? " scale-0 translate-y-[100vh] " : "";
+  const browserHiddenSyle = isHidden ? "scale-0 -translate-x-1/2" : "";
   return (
     <>
       <div
-        className="absolute "
+        id={`${title}-container`}
+        className={"absolute " + browserHiddenSyle}
         style={{
-          left: x,
-          top: y,
+          left: isHidden ? "50%" : x,
+          top: isHidden ? "100%" : y,
           width: w,
           height: h,
           zIndex: zIndex || 1,
+          transition: `all ${browserAnimate[title] ? 300 : 0}ms ease 0s`,
         }}
         onClick={() => dispatch(bringFront(title))}
       >
         {/* BrowserViewport */}
         <div
           className={
-            "h-full w-full bg-white shadow-xl transition-all overflow-x-hidden overflow-y-scroll duration-300 " +
-            browserStyle +
-            browserHiddenSyle
+            "h-full w-full bg-white shadow-xl transition-[shadow,transform] overflow-x-hidden overflow-y-scroll " +
+            browserStyle
           }
         >
           <TopBar
@@ -65,6 +67,7 @@ export default function Browser({
             maximizeHandler={maximizeHandler}
             initializeHandler={initializeHandler}
             moveHandler={moveHandler()}
+            isFullScreen={isFullscreen[title]}
           />
           {/* fallback component */}
         </div>

@@ -3,6 +3,7 @@ import openApp from "./slices/openAppSlice";
 import hiddenApp from "./slices/hiddenAppSlice";
 import zIndex from "./slices/zIndexSlice";
 import fullScreen from "./slices/fullScreenSlice";
+import browserAnimate from "./slices/browserAnimateSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     isHiddenApp: hiddenApp,
     zIndex: zIndex,
     fullScreen: fullScreen,
+    browserAnimate: browserAnimate,
   },
 });
 

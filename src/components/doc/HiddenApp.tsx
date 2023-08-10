@@ -1,4 +1,5 @@
 import { AppTitle } from "@/redux/slices/openAppSlice";
+import useBrowserAnimateTrigger from "@/utills/useBrowserAnimateTrigger";
 import Image from "next/image";
 
 const HIDENAPPIMAGE = {
@@ -20,13 +21,13 @@ export default function HiddenApp({
   isOpen,
   hiddenAppClickHandler,
 }: HiddenProps) {
+  const hiddenClick = useBrowserAnimateTrigger(title, () =>
+    hiddenAppClickHandler(title)
+  );
   return (
     <>
       {isHidden && isOpen && (
-        <div
-          className="ml-2 cursor-pointer"
-          onClick={() => hiddenAppClickHandler(title)}
-        >
+        <div className="ml-2 cursor-pointer" {...hiddenClick}>
           <Image
             src={HIDENAPPIMAGE[title]}
             width={50}
