@@ -5,6 +5,8 @@ import {
   AiOutlineMinus,
 } from "react-icons/ai";
 import { TopBarProps } from "./TopBar";
+import { AppTitle } from "@/redux/slices/openAppSlice";
+import { useAppDispatch } from "@/redux/hooks";
 
 const colorStyle = {
   red: "text-red-500 bg-red-500",
@@ -18,21 +20,29 @@ const DefaultBtnStyle =
 interface TopBarButtonProps {
   color: "red" | "yellow" | "green";
   browserButtonHandler: {
-    green: () => void;
-    red: () => void;
-    yellow: () => void;
+    green: {
+      onClick: () => void;
+    };
+    red: {
+      onClick: () => void;
+    };
+    yellow: {
+      onClick: () => void;
+    };
   };
+  title: AppTitle;
 }
 
 export default function TopBarButton({
   color,
   browserButtonHandler,
+  title,
 }: TopBarButtonProps) {
   const iconSize = "14";
   return (
     <button
       className={DefaultBtnStyle + colorStyle[color]}
-      onClick={browserButtonHandler[color]}
+      {...browserButtonHandler[color]}
     >
       {color === "red" && <AiOutlineClose size={iconSize} />}
       {color === "yellow" && <AiOutlineMinus size={iconSize} />}

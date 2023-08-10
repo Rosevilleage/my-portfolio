@@ -1,16 +1,13 @@
 "use client";
 import TopBarButton from "./TopBarButton";
-
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { AppTitle, closeApp } from "@/redux/slices/openAppSlice";
-import { hiddenApp, veiwApp } from "@/redux/slices/hiddenAppSlice";
-import { bringFront, deleteZIndex } from "@/redux/slices/zIndexSlice";
-import { setFull, setInit } from "@/redux/slices/fullScreenSlice";
+import { AppTitle } from "@/redux/slices/openAppSlice";
+import useTopbarButtons from "@/utills/useTopbarButtons";
 
 export interface TopBarProps {
   title: AppTitle;
   maximizeHandler: () => void;
   initializeHandler: () => void;
+  isFullScreen: boolean;
   moveHandler: {
     onMouseDown: (e: React.MouseEvent<Element, MouseEvent>) => void;
   };
@@ -23,47 +20,26 @@ export default function TopBar({
   initializeHandler,
   moveHandler,
   title,
+  isFullScreen,
 }: TopBarProps) {
-  const isFullScreen = useAppSelector((state) => state.fullScreen);
-
-  const dispatch = useAppDispatch();
-  const onCloseHandler = () => {
-    // browser open state false
-    dispatch(closeApp(title));
-    dispatch(veiwApp(title));
-    dispatch(deleteZIndex(title));
-    dispatch(setInit(title));
+  const topbarHookProps = {
+    maximizeHandler,
+    initializeHandler,
+    title,
   };
+  const { onFullscreenHandler, onCloseHandler, onHiddenHandler } =
+    useTopbarButtons(topbarHookProps);
 
-  const onHideHandler = () => {
-    // browser hiden state true
-    dispatch(hiddenApp(title));
-  };
-
-  const onFullscreenHandler = () => {
-    dispatch(bringFront(title));
-    if (!isFullScreen[title]) {
-      dispatch(setFull(title));
-      maximizeHandler();
-    } else {
-      dispatch(setInit(title));
-      initializeHandler();
-    }
-  };
   const browserButtonHandler = {
     green: onFullscreenHandler,
     red: onCloseHandler,
-    yellow: onHideHandler,
-  };
-
-  const onMouseDownHandler = () => {
-    if (!isFullScreen) return moveHandler;
+    yellow: onHiddenHandler,
   };
 
   return (
     <div
       className="sticky w-full px-2 py-2 bg-gray-800 "
-      {...(!isFullScreen[title] && { ...moveHandler })}
+      {...(!isFullScreen && { ...moveHandler })}
     >
       <div className="flex justify-around w-16">
         {ButtonColors.map((color) => (
@@ -71,6 +47,7 @@ export default function TopBar({
             key={color}
             color={color}
             browserButtonHandler={browserButtonHandler}
+            title={title}
           />
         ))}
       </div>
