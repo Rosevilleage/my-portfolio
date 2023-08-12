@@ -32,6 +32,22 @@ module.exports = {
           from: { transform: "rotate(0deg)" },
           to: { transform: "rotate(-360deg)" },
         },
+        opacs: {
+          from: {
+            opacity: "0.5",
+            filter: "drop-shadow(0px 0px 20px rgba(255, 255, 255, 0))",
+          },
+          to: {
+            opacity: "1",
+            filter: "drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.8))",
+          },
+        },
+        typingCursor: {
+          from: {
+            borderRight: "2px solid white",
+          },
+          to: { borderRight: "2px solid rgba(0,0,0,0)" },
+        },
       },
       animation: {
         spining_1: "spining 1s linear infinite",
@@ -50,6 +66,8 @@ module.exports = {
         backspining_6: "backspining 6s linear infinite",
         backspining_7: "backspining 7s linear infinite",
         backspining_8: "backspining 8s linear infinite",
+        icon_opac: "opacs 2s linear 1 forwards",
+        typingCursor: "typingCursor 1s ease-in-out 3000ms infinite",
       },
     },
   },
