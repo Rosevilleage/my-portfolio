@@ -1,5 +1,12 @@
 import Link from "next/link";
 import CarouserlSlide from "./CarouselSlide";
+import {
+  FcBusinessman,
+  FcBrokenLink,
+  FcSupport,
+  FcIdea,
+  FcRating,
+} from "react-icons/fc";
 
 interface ProjectProps {
   data: {
@@ -35,16 +42,22 @@ export default function ProjectsContents({ data, w }: ProjectProps) {
           <div className="w-full h-px mx-auto mb-2 bg-slate-500" />
           {/* introduction p*/}
           <div className="mb-4">
-            <h2 className="mb-1 text-xl font-medium">Introduction</h2>
-            <p className="ml-1">{data.introduction}</p>
+            <div className="flex items-center mb-1 text-2xl font-medium">
+              <FcBusinessman />
+              <h2 className="ml-2">Introduction</h2>
+            </div>
+            <p className="ml-1 text-lg">{data.introduction}</p>
           </div>
           {/* url a*/}
           <div className="flex mb-4">
-            <h2 className="mr-4 text-xl font-medium">URL :</h2>
+            <div className="flex items-center mr-2 text-2xl font-medium">
+              <FcBrokenLink />
+              <h2 className="ml-2">URL :</h2>
+            </div>
             <Link
               href={data.url.github}
               target="_blank"
-              className="p-1 ml-1 bg-blue-400 rounded-md text-yellow-50"
+              className="p-1 ml-1 bg-blue-400 rounded-md text-yellow-50 "
             >
               github
             </Link>
@@ -69,26 +82,35 @@ export default function ProjectsContents({ data, w }: ProjectProps) {
           </div>
           {/* stack p*/}
           <ul className="mb-4 list-disc list-inside ">
-            <h2 className="text-xl font-medium ">Stack</h2>
+            <div className="flex items-center text-2xl font-medium">
+              <FcSupport />
+              <h2 className="ml-2 ">Stack</h2>
+            </div>
             {data.stack.map((item) => (
-              <li key={item} className="ml-3 ">
+              <li key={item} className="ml-3 text-lg">
                 {item}
               </li>
             ))}
           </ul>
           {/* mypart p*/}
           <ul className="mb-4 list-disc list-inside ">
-            <h2 className="text-xl font-medium ">{part}</h2>
+            <div className="flex items-center text-2xl font-medium">
+              <FcRating />
+              <h2 className="ml-1 ">{part}</h2>
+            </div>
             {data.mypart.map((item) => (
-              <li key={item} className="ml-3 ">
+              <li key={item} className="ml-3 text-lg ">
                 {item}
               </li>
             ))}
           </ul>
           {/* lessonLearned p*/}
           <div>
-            <h2 className="mb-1 text-xl font-medium">프로젝트를 통해 느낀점</h2>
-            <p>{data.lessonLearn}</p>
+            <div className="flex items-center mb-1 text-2xl font-medium">
+              <FcIdea />
+              <h2 className="ml-1">프로젝트를 통해 느낀점</h2>
+            </div>
+            <p className="ml-1 text-lg">{data.lessonLearn}</p>
           </div>
         </div>
       </div>
