@@ -35,21 +35,21 @@ export default function ProjectsContents({ data, w }: ProjectProps) {
       <div>
         <CarouserlSlide images={data.images} w={w} />
       </div>
-      <div className="w-full p-6 ">
+      <div className="w-full p-8 ">
         <div className=" max-w-[1300px] w-full mx-auto">
           <h1 className="mb-2 text-3xl font-semibold">{data.name}</h1>
           <p className="mb-1 ml-1 font-semibold">{projecType}</p>
           <div className="w-full h-px mx-auto mb-2 bg-slate-500" />
           {/* introduction p*/}
-          <div className="mb-4">
-            <div className="flex items-center mb-1 text-2xl font-medium">
+          <div className="mb-8">
+            <div className="flex items-center mb-2 text-2xl font-medium">
               <FcBusinessman />
               <h2 className="ml-2">Introduction</h2>
             </div>
             <p className="ml-1 text-lg">{data.introduction}</p>
           </div>
           {/* url a*/}
-          <div className="flex mb-4">
+          <div className="flex mb-8">
             <div className="flex items-center mr-2 text-2xl font-medium">
               <FcBrokenLink />
               <h2 className="ml-2">URL :</h2>
@@ -81,7 +81,7 @@ export default function ProjectsContents({ data, w }: ProjectProps) {
             )}
           </div>
           {/* stack p*/}
-          <ul className="mb-4 list-disc list-inside ">
+          <ul className="mb-8 list-disc list-inside ">
             <div className="flex items-center text-2xl font-medium">
               <FcSupport />
               <h2 className="ml-2 ">Stack</h2>
@@ -93,7 +93,7 @@ export default function ProjectsContents({ data, w }: ProjectProps) {
             ))}
           </ul>
           {/* mypart p*/}
-          <ul className="mb-4 list-disc list-inside ">
+          <ul className="mb-8 list-disc list-inside ">
             <div className="flex items-center text-2xl font-medium">
               <FcRating />
               <h2 className="ml-1 ">{part}</h2>
