@@ -8,6 +8,7 @@ import { AppTitle } from "@/redux/slices/openAppSlice";
 import useBrowser from "@/utills/useBrowser";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { bringFront } from "@/redux/slices/zIndexSlice";
+import Contents from "./contents/Contents";
 
 interface BrowserProps {
   boundaryCur: HTMLDivElement | null;
@@ -58,7 +59,7 @@ export default function Browser({
         {/* BrowserViewport */}
         <div
           className={
-            "h-full w-full bg-white shadow-xl transition-[shadow,transform] overflow-x-hidden overflow-y-scroll " +
+            "h-full w-full shadow-xl transition-[shadow,transform] overflow-hidden " +
             browserStyle
           }
         >
@@ -70,9 +71,10 @@ export default function Browser({
             isFullScreen={isFullscreen[title]}
           />
           {/* fallback component */}
+          <Contents title={title} w={w} />
         </div>
         {/* BrowserResizer */}
-        {!isFullscreen &&
+        {!isFullscreen[title] &&
           AZIMUTH.map((direction) => {
             const transformation = {
               direction,

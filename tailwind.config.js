@@ -9,6 +9,9 @@ module.exports = {
     minWidth: {
       mac: "1440px",
     },
+    maxWidth: {
+      mac: "1440px",
+    },
     minHeight: {
       mac: "783px",
       screen: "100vh",

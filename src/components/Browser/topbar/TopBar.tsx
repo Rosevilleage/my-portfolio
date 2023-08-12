@@ -38,7 +38,7 @@ export default function TopBar({
 
   return (
     <div
-      className="sticky w-full px-2 py-2 bg-gray-800 "
+      className="w-full px-2 py-2 bg-gray-800 "
       {...(!isFullScreen && { ...moveHandler })}
     >
       <div className="flex justify-around w-16">
