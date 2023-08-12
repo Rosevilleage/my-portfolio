@@ -4,7 +4,6 @@ import {
   MIN_H,
   Direction,
   MoveBoundary,
-  DESKTOP_MB,
 } from "@/components/Browser/config";
 
 import { inrange } from "./inrange";
@@ -14,10 +13,11 @@ export interface SetConfigDate {
   browserConfig: BrowserConfig;
   interval: { x: number; y: number };
   moveBoundary: MoveBoundary;
+  limitedY: number;
 }
 
 export function updateBrowserConfig(input: SetConfigDate) {
-  const { direction, browserConfig, interval, moveBoundary } = input;
+  const { direction, browserConfig, interval, moveBoundary, limitedY } = input;
   const { x, y, w, h } = browserConfig;
 
   switch (direction) {
@@ -40,14 +40,14 @@ export function updateBrowserConfig(input: SetConfigDate) {
         x,
         y,
         w: inrange(w + interval.x, MIN_W, moveBoundary.w - x),
-        h: inrange(h + interval.y, MIN_H, moveBoundary.h - y - DESKTOP_MB),
+        h: inrange(h + interval.y, MIN_H, moveBoundary.h - y - limitedY),
       };
     case "sw":
       return {
         x: inrange(x + interval.x, 0, x + w - MIN_W),
         y,
         w: inrange(w - interval.x, MIN_W, x + w),
-        h: inrange(h + interval.y, MIN_H, moveBoundary.h - y - DESKTOP_MB),
+        h: inrange(h + interval.y, MIN_H, moveBoundary.h - y - limitedY),
       };
     case "n":
       return {
@@ -68,7 +68,7 @@ export function updateBrowserConfig(input: SetConfigDate) {
         x,
         y,
         w,
-        h: inrange(h + interval.y, MIN_H, moveBoundary.h - y - DESKTOP_MB),
+        h: inrange(h + interval.y, MIN_H, moveBoundary.h - y - limitedY),
       };
     case "w":
       return {

@@ -4,7 +4,7 @@ import React from "react";
 import { AZIMUTH } from "./config";
 import BrowserResizer from "./BrowserResizer";
 import TopBar from "./topbar/TopBar";
-import { AppTitle } from "@/redux/slices/openAppSlice";
+import { AppState, AppTitle } from "@/redux/slices/openAppSlice";
 import useBrowser from "@/utills/useBrowser";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { bringFront } from "@/redux/slices/zIndexSlice";
@@ -16,6 +16,10 @@ interface BrowserProps {
   zIndex: number | undefined;
   isHidden: boolean;
 }
+const anyTruthy = (state: AppState) => {
+  const { about, cocktail, todo, portfolio } = state;
+  return about || cocktail || todo || portfolio;
+};
 
 export default function Browser({
   boundaryCur,
@@ -23,18 +27,18 @@ export default function Browser({
   zIndex,
   isHidden,
 }: BrowserProps) {
+  const dispatch = useAppDispatch();
+  const isFullscreen = useAppSelector((state) => state.fullScreen);
+  const browserAnimate = useAppSelector((state) => state.browserAnimate);
+  const anyFull = anyTruthy(isFullscreen);
   const {
     browserConfig,
     resizeHandler,
     maximizeHandler,
     initializeHandler,
     moveHandler,
-  } = useBrowser(boundaryCur);
+  } = useBrowser({ boundaryCur, anyFull });
   const { x, y, w, h } = browserConfig;
-
-  const dispatch = useAppDispatch();
-  const isFullscreen = useAppSelector((state) => state.fullScreen);
-  const browserAnimate = useAppSelector((state) => state.browserAnimate);
 
   const browserStyle = isFullscreen[title]
     ? ""
