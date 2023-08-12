@@ -25,3 +25,19 @@
     padding: 0;
   }
 }
+
+
+.btn span:hover::before {
+  @apply h-full;
+}
+
+.btn span:hover::after {
+  @apply w-full;
+}
+
+.btn:hover:before {
+  @apply h-full;
+}
+.btn:hover:after {
+   @apply w-full;
+}
