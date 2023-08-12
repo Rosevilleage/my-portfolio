@@ -54,7 +54,7 @@ export default function Doc() {
   return (
     <div
       className={
-        "min-w-[250px] h-[60px] absolute left-1/2 -translate-x-1/2 z-50 " +
+        "min-w-[250px] h-[60px] absolute left-1/2 -translate-x-1/2 z-50 transition-all " +
         docPosition
       }
       onMouseLeave={onMouseLeaveHandler}
