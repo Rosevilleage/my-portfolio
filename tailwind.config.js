@@ -34,7 +34,7 @@ module.exports = {
         },
         opacs: {
           from: {
-            opacity: "0.5",
+            opacity: "0.1",
             filter: "drop-shadow(0px 0px 20px rgba(255, 255, 255, 0))",
           },
           to: {
@@ -47,6 +47,14 @@ module.exports = {
             borderRight: "2px solid white",
           },
           to: { borderRight: "2px solid rgba(0,0,0,0)" },
+        },
+        buttonOpac: {
+          from: {
+            boxShadow: "0 0 8px 0 rgba(255, 255, 255, 0)",
+          },
+          to: {
+            boxShadow: "0 0 8px 0 rgba(255, 255, 255, 0.9)",
+          },
         },
       },
       animation: {
@@ -66,8 +74,9 @@ module.exports = {
         backspining_6: "backspining 6s linear infinite",
         backspining_7: "backspining 7s linear infinite",
         backspining_8: "backspining 8s linear infinite",
-        icon_opac: "opacs 2s linear 1 forwards",
+        icon_opac: "opacs 4s linear 1 forwards",
         typingCursor: "typingCursor 1s ease-in-out 3000ms infinite",
+        buttonShdow: "buttonOpac 4s ease-out 3000ms 1 forwards",
       },
     },
   },
