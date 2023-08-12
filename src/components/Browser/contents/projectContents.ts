@@ -5,11 +5,11 @@ export const ProjectContents = {
     isTeam: true,
     name: "알딸딸: 나만의 칵테일 레시피",
     images: [
-      baseUrl + "cocktail1.png",
-      baseUrl + "cocktail2.png",
-      baseUrl + "cocktail3.png",
-      baseUrl + "cocktail4.png",
-      baseUrl + "cocktail5.png",
+      baseUrl + "cocktails1.png",
+      baseUrl + "cocktails2.png",
+      baseUrl + "cocktails3.png",
+      baseUrl + "cocktails4.png",
+      baseUrl + "cocktails5.png",
     ],
     introduction:
       "칵테일을 좋아하는 사람들이 서로 레시피를 공유하고 소통할 수 있는 서비스입니다. 사용자들은 자신이 만든 칵테일 레시피를 업로드하고, 다른 사용자들이 만든 레시피를 검색하고 참고할 수 있습니다. 이를 통해 칵테일을 좋아하는 이들끼리 서로의 레시피를 공유하고, 칵테일 제조의 새로운 아이디어를 얻을 수 있습니다.",
