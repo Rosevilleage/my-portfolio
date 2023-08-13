@@ -5,9 +5,10 @@ import { useState } from "react";
 
 interface IntroProps {
   closeIntro: () => void;
+  isFirst: boolean;
 }
 
-export default function Intro({ closeIntro }: IntroProps) {
+export default function Intro({ closeIntro, isFirst }: IntroProps) {
   const text = "jangchanhee Portfolio";
   const [showText, setShowText] = useState("");
   const [count, setCount] = useState(0);
@@ -25,8 +26,12 @@ export default function Intro({ closeIntro }: IntroProps) {
       return result;
     });
   }, 150);
+
+  const containerStyle = isFirst
+    ? " absolute z-[100] top-0 left-0 bottom-0 right-0 flex flex-col justify-center items-center bg-black"
+    : "hidden";
   return (
-    <div className=" absolute z-[100] top-0 left-0 bottom-0 right-0 flex flex-col justify-center items-center bg-black">
+    <div className={containerStyle}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="134"

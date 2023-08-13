@@ -29,9 +29,10 @@ export default function DesktopBoundary() {
       else sessionStorage.setItem("visit", "true");
     }
   }, []);
+
   return (
     <div className="relative w-full h-full overflow-hidden" ref={boundaryRef}>
-      {isFirst && <Intro closeIntro={closeIntro} />}
+      <Intro isFirst={isFirst} closeIntro={closeIntro} />
       {APPList.map(
         (app) =>
           isOpenApp[app] && (
