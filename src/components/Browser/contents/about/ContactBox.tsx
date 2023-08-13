@@ -28,7 +28,7 @@ type ContactKey = "email" | "phone" | "github" | "blog";
 export default function ContactBox({ contact }: ConTactProps) {
   const contactKeys = Object.keys(contact);
   return (
-    <div className="flex flex-wrap justify-around w-full mt-5">
+    <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(400px,1fr))] max-w-[1100px] w-full mt-5 mx-auto">
       {contactKeys.map((key) => (
         <div
           key={key}
@@ -45,7 +45,7 @@ export default function ContactBox({ contact }: ConTactProps) {
             <Link
               href={contact[key]}
               target="_blank"
-              className="flex items-center text-lg"
+              className="flex items-center text-lg cursor-pointer"
             >
               <span className="mr-1">
                 <AiOutlineLink />
