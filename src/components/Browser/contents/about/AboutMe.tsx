@@ -35,7 +35,7 @@ export default function AboutMe({ data }: AboutContentProps) {
         <div className="p-8 ">
           <div>
             {data.background.split("\n").map((text) => (
-              <p key={text} className="mx-auto w-max">
+              <p key={text} className="w-full text-center">
                 {text}
               </p>
             ))}
