@@ -75,7 +75,7 @@ module.exports = {
         backspining_7: "backspining 7s linear infinite",
         backspining_8: "backspining 8s linear infinite",
         icon_opac: "opacs 4s linear 1 forwards",
-        typingCursor: "typingCursor 1s ease-in-out 3000ms infinite",
+        typingCursor: "typingCursor 1s ease-in-out infinite",
         buttonShdow: "buttonOpac 4s ease-out 3000ms 1 forwards",
       },
     },
