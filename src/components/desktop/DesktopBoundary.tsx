@@ -10,7 +10,7 @@ import Intro from "../intro/Intro";
 
 export default function DesktopBoundary() {
   const boundaryRef = useRef<HTMLDivElement>(null);
-  const boundaryCur = boundaryRef.current;
+  const boundaryCur = boundaryRef.current as HTMLDivElement;
 
   const isOpenApp = useAppSelector((state) => state.isOpenApp);
   const zIndexArr = useAppSelector((state) => state.zIndex);

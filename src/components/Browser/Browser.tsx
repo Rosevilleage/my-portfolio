@@ -11,7 +11,7 @@ import { bringFront } from "@/redux/slices/zIndexSlice";
 import Contents from "./contents/Contents";
 
 interface BrowserProps {
-  boundaryCur: HTMLDivElement | null;
+  boundaryCur: HTMLDivElement;
   title: AppTitle;
   zIndex: number | undefined;
   isHidden: boolean;
@@ -31,6 +31,8 @@ export default function Browser({
   const isFullscreen = useAppSelector((state) => state.fullScreen);
   const browserAnimate = useAppSelector((state) => state.browserAnimate);
   const anyFull = anyTruthy(isFullscreen);
+  if (boundaryCur) {
+  }
   const {
     browserConfig,
     resizeHandler,
