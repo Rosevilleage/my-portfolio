@@ -16,7 +16,14 @@ interface AppProps {
 
 export default function App({ title, isOpen, appClickHandler }: AppProps) {
   return (
-    <div className="cursor-pointer" onClick={() => appClickHandler(title)}>
+    <div
+      className="relative cursor-pointer app"
+      onClick={() => appClickHandler(title)}
+    >
+      <div className="doc-arrow hidden absolute px-[5px] py-[3px] -translate-x-1/2 left-1/2 -top-10 bg-black rounded-md ">
+        <span className="absolute w-2.5 h-2.5 -translate-x-1/2 -bottom-2 left-1/2 border-t-8 border-t-black border-r-8 border-l-8 border-r-transparent border-l-transparent "></span>
+        <p className="text-sm text-white tsxt-center">{title}</p>
+      </div>
       <Image
         src={APPIMAGES[title]}
         width={35}
