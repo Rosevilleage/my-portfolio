@@ -10,7 +10,7 @@ export interface AppState {
 export type AppTitle = "about" | "cocktail" | "todo" | "portfolio";
 
 const initialState = {
-  about: false,
+  about: true,
   cocktail: false,
   todo: false,
   portfolio: false,
