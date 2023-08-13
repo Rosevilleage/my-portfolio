@@ -41,9 +41,3 @@
 .btn:hover:after {
    @apply w-full;
 }
-
-.app:hover {
-  &> .doc-arrow {
-    display: block;
-  }
-}
