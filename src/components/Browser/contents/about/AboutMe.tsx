@@ -23,21 +23,19 @@ interface AboutContentProps {
 export default function AboutMe({ data }: AboutContentProps) {
   return (
     <>
-      <div className="h-full ">
-        <div className="flex flex-col items-center justify-center w-full h-60 bg-cyan-950 text-slate-200">
-          <div className="mx-auto ">
-            <h1 className="text-5xl font-semibold ">{data.name}</h1>
-          </div>
-          <div className="p-6 ">
-            <p>{data.introduction}</p>
-          </div>
+      <div className="flex flex-col items-center justify-center w-full h-60 bg-cyan-950 text-slate-200">
+        <div className="mx-auto ">
+          <h1 className="text-5xl font-semibold ">{data.name}</h1>
         </div>
-        <div className="p-8 ">
-          <div>
+        <div className="p-6 text-lg">
+          <p>{data.introduction}</p>
+        </div>
+      </div>
+      <div className="w-full h-full ">
+        <div className="p-8 mx-auto text-base font-medium w-full max-w-[1000px]">
+          <div className="mx-auto ">
             {data.background.split("\n").map((text) => (
-              <p key={text} className="w-full text-center">
-                {text}
-              </p>
+              <p key={text}>{text}</p>
             ))}
           </div>
           <ContactBox contact={data.contact} />
