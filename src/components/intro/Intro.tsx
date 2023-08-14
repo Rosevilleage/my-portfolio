@@ -27,11 +27,14 @@ export default function Intro({ closeIntro, isFirst }: IntroProps) {
     });
   }, 150);
 
-  const containerStyle = isFirst
-    ? " absolute z-[100] top-0 left-0 bottom-0 right-0 flex flex-col justify-center items-center bg-black"
-    : "hidden";
+  const containerStyle = isFirst ? " absolute " : "hidden";
   return (
-    <div className={containerStyle}>
+    <div
+      className={
+        containerStyle +
+        " z-[100] top-0 left-0 bottom-0 right-0 flex flex-col justify-center items-center bg-black"
+      }
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="134"
