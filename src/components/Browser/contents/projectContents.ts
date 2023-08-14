@@ -30,15 +30,17 @@ export const ProjectContents = {
       "react-icons",
     ],
     mypart: [
-      "칵테일 레시피 목록 조회",
+      "main, custom 페이지 칵테일 레시피 목록 조회",
       "칵테일 레시피 검색",
-      "레시피 찜하기",
+      "nav bar 기능 및 등장 애니메이션",
+      "로그인 안내 페이지 구현",
+      "레시피 찜하기 및 취소",
       "찜목록 조회 및 수정",
       "내가 만든 레시피 조회 및 삭제",
       "error boundary",
     ],
     lessonLearn:
-      "이 팀 프로젝트를 통해 협업에 대한 좋은 경험을 얻게 되었습니다. 혼자서 떠올리기 어려운 팀원들의 아이디어들은 해당 서비스를 만드는데 있어서 큰 역할을 했고, 해당 아이디어들을 결합하여 서비스를 만들어내는 과정은 힘들기도 하지만 매우 보람찼습니다. 협업의 과정이 순탄하게만 흘러가지 않았지만 이를 통해 팀으로 프로젝트를 만들어 나갈때 컨벤션과 자신의 아이디어나 생각을 상대방이 이해할 수 있게 정리해 소통하는 것에 대한 중요성을 깨달았습니다.",
+      "이 팀 프로젝트를 통해 협업에 대한 좋은 경험을 얻게 되었습니다. 혼자서 떠올리기 어려운 팀원들의 아이디어들은 해당 서비스를 만드는데 있어서 큰 역할을 했고, 해당 아이디어들을 결합하여 서비스를 만들어내는 과정이 매우 즐거웠습니다. 협업의 과정이 순탄하게 흘러가지만은 않았지만 이를 통해 팀으로 프로젝트를 만들어 나갈때 컨벤션과 자신의 의견을 정리해 소통하는 것에 대한 중요성을 깨달았습니다. 또한 사용자 경험 피드백을 통해 사용자 경험을 수집하고 이를 개선하기위해 고민해보는 경험도 하게 되었습니다.",
   },
   todo: {
     isTeam: false,
@@ -72,7 +74,7 @@ export const ProjectContents = {
       "북마크 기능을 통한 완료/반복 일정 관리",
     ],
     lessonLearn:
-      "최초에는 todo 기능만 간단하게 만들었지만 추후에 달력 기능을 추가하면서 복수의 컨텐츠를 다루는데 있어서 컴포넌트 간에 데이터를 동기화 하는 방법에 대한 방법에 대해 알아가는 경험이 되었습니다. 아직 완성하지 못한 기능들이 있어서 시간이 날때 업데이트를 해나가면서 프로젝트를 장기적으로 관리하는 경험도 기대하고 있습니다.",
+      "최초에는 todo 기능만 간단하게 만들었지만 이후에 달력 기능을 추가하면서 복수의 컨텐츠를 다루는데 있어서 컴포넌트 간에 데이터를 동기화 하는 방법에 대한 방법에 대해 알아가는 경험이 되었습니다. 아직 완성하지 못한 기능들이 있어 추후 업데이트를 해나가면서 프로젝트를 장기적으로 관리하는 경험도 기대하고 있습니다.",
   },
   portfolio: {
     isTeam: false,
@@ -84,50 +86,52 @@ export const ProjectContents = {
       baseUrl + "portfolio4.png",
     ],
     introduction:
-      "제가 만든 프로젝트들에 대한 포트폴리로입니다. 기존의 create-react-app 방식을 벗어나 이전부터 관심을 가지던 next js와 tailwind를 경험해보기 위해서 next, tailwind를 사용해 제작하였습니다.",
+      "제가 만든 프로젝트들에 대한 포트폴리오입니다. 기존의 create-react-app 방식을 벗어나 이전부터 관심을 가지던 next js와 tailwind를 경험해보기 위해서 next, tailwind를 사용해 제작하였습니다.",
     url: {
       github: "https://github.com/Rosevilleage/my-portfolio",
       deploy: "",
       blog: "",
     },
-    stack: ["typescript", "redux-toolkit", "tailwind", "next", "react-icons"],
+    stack: [
+      "typescript",
+      "redux-toolkit",
+      "tailwind",
+      "next",
+      "react-icons",
+      "react-slick",
+    ],
     mypart: [
       "browser drag, resize",
       "browser 최소화 및 최대화",
-      "동적 browser z-index 기능",
+      "browser 동작 시 z-index 업데이트",
     ],
     lessonLearn:
-      "이번 프로젝트를 통해 drag, resize 기능을 패키지 없이 구현하면서 mouse event에 대한 새로운 경험을 하게되었습니다. 또한 이번 기회에 tailwind 라는 새로운 스타일링 기법을 경험해보며 자주 사용하던 styled-components와 비교해보면서 각 방법의 장단점을 채감해보는 시간이었습니다.",
+      "이번 프로젝트를 통해 drag, resize 기능을 패키지 없이 구현하면서 mouse event에 대한 새로운 경험을 하게되었습니다. 또한 이번 기회에 tailwind 라는 유틸리티 클래스 스타일링을 경험해보며 자주 사용하던 styled-components와 비교해보면서 각 방법의 장단점을 채감해보는 시간이었습니다.",
   },
 };
 
 export const aboutContent = {
   name: "About Me",
   introduction:
-    "다양한 기능을 만드는 것을 좋아하며, 새로운 지식을 만나는 경험을 통해 문제해결 능력을 성장시켜, 문제해결을 위해 같이 의논하고 싶은 개발자가 되고 싶은 장찬희입니다.",
+    "다양한 기능을 만드는 것을 즐기며, 협업을 통해 완성도 있는 서비스를 만드는 것에 관심이 많은 장찬희 입니다.",
   background:
-    "무심코 지나쳐왔던 웹 서비스들의 개성과 기능에 매력을 느껴 독학으로 3달간 공부를 진행하다가 팀프로젝트 등 공부에 도움을 얻고자 국비지원 부트캠프를 수료했습니다.\n팀프로젝트를 통해 여러 사람과 작업하는 방식에 대한 고민을 통해 좋은 협업을 위한 소통의 중요성을 깨닫게 되었습니다. 앞으로도 동료들과 다양한 의견 소통으로 완성도 높은 서비스를 개발하고 싶습니다.",
+    "무심코 지나쳐왔던 웹 서비스들의 개성과 기능에 매력을 느껴 독학으로 3달간 공부를 진행하다가 팀프로젝트 등 공부에 도움을 얻고자 국비지원 부트캠프를 수료했습니다.\n국비지원 과정 중 백엔드 인원과 함께 진행한 두 번의 팀프로젝트에서 프론트엔드 팀장을 맡은 경험이있습니다. 두번의 팀프로젝트 경험에서 두 번째 프로젝트는 첫 번째 프로젝트에서 문제 되었던 상황 공유, 코드 리뷰 등을 개선하여 배포까지 큰 차질없이 진행해 협업을 위한 팀장과 팀원에 대한 역할을 이해하고 있습니다.",
   contact: {
     email: "jangchanhee0@gmail.com",
     phone: "010-6508-3557",
     github: "https://github.com/Rosevilleage",
     blog: "https://velog.io/@cksgml1914",
   },
-  skill: [
-    "javascript",
-    "html5",
-    "css",
-    "typescript",
-    "react",
-    "styled-components",
-    "redux-toolkit",
-    "axios",
-  ],
+  skill: ["javascript", "html5", "css", "react", "styled-components", "axios"],
   education: [
     {
       ago: "2022.12\n ~ \n2023.06",
       name: "코드스테이츠 프론트엔드 과정",
-      description: ["Javascript 기반 프론트엔드 과정", "React 위주의 학습"],
+      description: [
+        "Javascript 기반 프론트엔드 과정",
+        "React 위주의 학습",
+        "두 번의 팀프로젝트 진행",
+      ],
     },
     {
       ago: "2016.02\n ~ \n2022.02",

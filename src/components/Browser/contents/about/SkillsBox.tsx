@@ -2,10 +2,8 @@ type SkillType =
   | "javascript"
   | "html5"
   | "css"
-  | "typescript"
   | "react"
   | "styled-components"
-  | "redux-toolkit"
   | "axios";
 
 export default function SkillsBox({ skills }: { skills: string[] }) {

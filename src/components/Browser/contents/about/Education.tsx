@@ -14,7 +14,7 @@ export default function Education({ education }: EducationProps) {
         {education.map((log) => (
           <div
             key={log.name}
-            className="flex mb-5 rounded-lg bg-cyan-700 h-[121px] shadow-gray-300 shadow-lg"
+            className="flex mb-5 rounded-lg bg-cyan-700 h-[160px] shadow-gray-300 shadow-lg"
           >
             <div className="flex flex-col items-center justify-center p-2 text-white">
               {log.ago.split("\n").map((time) => (
