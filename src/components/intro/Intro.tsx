@@ -61,12 +61,12 @@ export default function Intro({ closeIntro, isFirst }: IntroProps) {
         />
       </svg>
       <button
-        className=" animate-buttonShdow w-[188px] p-2 mt-10 relative cursor-pointer btn before:left-0 before:top-0 after:left-0 after:top-0 before:absolute after:absolute before:transition-all before:duration-300 before:bg-slate-200 after:bg-slate-200 after:transition-all after:duration-300 before:w-px before:h-0 after:w-0 after:h-px"
+        className=" group hover:before:h-full hover:after:w-full  animate-buttonShdow w-[188px] p-2 mt-10 relative cursor-pointer btn before:left-0 before:top-0 after:left-0 after:top-0 before:absolute after:absolute before:transition-all before:duration-300 before:bg-slate-200 after:bg-slate-200 after:transition-all after:duration-300 before:w-px before:h-0 after:w-0 after:h-px"
         onMouseEnter={onMouseEnterHandler}
         onMouseLeave={onMouseLeaveHandler}
         onClick={closeIntro}
       >
-        <span className="absolute inset-0 before:absolute after:absolute before:transition-all before:duration-300 before:bg-slate-200 before:bottom-0 before:right-0 before:w-px before:h-0 after:transition-all after:duration-300 after:bg-slate-200 after:bottom-0 after:right-0 after:w-0 after:h-px"></span>
+        <span className="absolute inset-0 group-hover:before:h-full group-hover:after:w-full before:absolute after:absolute before:transition-all before:duration-300 before:bg-slate-200 before:bottom-0 before:right-0 before:w-px before:h-0 after:transition-all after:duration-300 after:bg-slate-200 after:bottom-0 after:right-0 after:w-0 after:h-px"></span>
         {isHover && (
           <p className="h-6 pr-px mx-auto w-max text-slate-200 ">Enter</p>
         )}

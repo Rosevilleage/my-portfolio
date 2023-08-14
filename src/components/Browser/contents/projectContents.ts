@@ -90,7 +90,7 @@ export const ProjectContents = {
     url: {
       github: "https://github.com/Rosevilleage/my-portfolio",
       deploy: "",
-      blog: "",
+      blog: "https://velog.io/@cksgml1914/next-tailwind-%EA%B2%BD%ED%97%98%EA%B8%B0-with-Portfolio",
     },
     stack: [
       "typescript",
