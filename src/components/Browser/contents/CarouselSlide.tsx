@@ -13,27 +13,24 @@ export default function CarouserlSlide({ images, w }: CarouselProps) {
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
+    rows: 1,
+    slidesPerRow: 1,
   };
   return (
-    <div>
+    <div className="relative" style={{ width: w, height: "max-content" }}>
       <Slider {...settings}>
         {images.map((img, i) => (
-          <div
-            key={img}
-            style={{
-              width: w,
-              height: w / 2,
-            }}
-          >
+          <div key={img} style={{ height: w / 3, width: w, margin: "auto" }}>
             <Image
               src={img}
               alt={`image${i}`}
-              width={w / 1.3}
+              width={w}
               height={w / 3}
-              style={{ margin: "auto", borderRadius: "0.5rem" }}
+              style={{
+                margin: "auto",
+                borderRadius: "0.5rem",
+              }}
               priority
-              placeholder="blur"
-              blurDataURL={img}
             />
           </div>
         ))}
