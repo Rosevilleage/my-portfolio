@@ -33,6 +33,7 @@ export default function HiddenApp({
             width={50}
             height={40}
             alt={title + " browser screen shot"}
+            priority
           />
         </div>
       )}

@@ -31,6 +31,9 @@ export default function CarouserlSlide({ images, w }: CarouselProps) {
               width={w / 1.3}
               height={w / 3}
               style={{ margin: "auto", borderRadius: "0.5rem" }}
+              priority
+              placeholder="blur"
+              blurDataURL={img}
             />
           </div>
         ))}
