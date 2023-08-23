@@ -9,15 +9,9 @@ import useBrowserAnimateTrigger from "./useBrowserAnimateTrigger";
 
 interface UseTopBarButtonProps {
   title: AppTitle;
-  maximizeHandler: () => void;
-  initializeHandler: () => void;
 }
 
-export default function useTopbarButtons({
-  title,
-  maximizeHandler,
-  initializeHandler,
-}: UseTopBarButtonProps) {
+export default function useTopbarButtons({ title }: UseTopBarButtonProps) {
   const isFullScreen = useAppSelector((state) => state.fullScreen)[title];
   const dispatch = useDispatch();
 

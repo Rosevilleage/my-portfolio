@@ -54,30 +54,12 @@ export default function useBrowser({ boundaryCur, anyFull }: UseBrowserProps) {
     }, true);
   };
 
-  const maximizeHandler = () => {
-    setBrowserConfig({
-      x: 0,
-      y: 0,
-      w: moveBoundary.w,
-      h: moveBoundary.h,
-    });
-  };
-
   const minimizeHandler = () => {
     setBrowserConfig({
       x: moveBoundary.w,
       y: moveBoundary.h,
       w: 0,
       h: 0,
-    });
-  };
-
-  const initializeHandler = () => {
-    setBrowserConfig({
-      x: Math.floor(moveBoundary.w / 2 - DEFUALT_W / 2),
-      y: Math.floor(moveBoundary.h / 2 - DEFUALT_H / 2),
-      w: DEFUALT_W,
-      h: DEFUALT_H,
     });
   };
 
@@ -95,9 +77,7 @@ export default function useBrowser({ boundaryCur, anyFull }: UseBrowserProps) {
   return {
     browserConfig,
     resizeHandler,
-    maximizeHandler,
     minimizeHandler,
-    initializeHandler,
     moveHandler,
   };
 }

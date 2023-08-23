@@ -33,13 +33,10 @@ export default function Browser({
   const anyFull = anyTruthy(isFullscreen);
   if (boundaryCur) {
   }
-  const {
-    browserConfig,
-    resizeHandler,
-    maximizeHandler,
-    initializeHandler,
-    moveHandler,
-  } = useBrowser({ boundaryCur, anyFull });
+  const { browserConfig, resizeHandler, moveHandler } = useBrowser({
+    boundaryCur,
+    anyFull,
+  });
   const { x, y, w, h } = browserConfig;
 
   const browserStyle = isFullscreen[title]
@@ -72,8 +69,6 @@ export default function Browser({
         >
           <TopBar
             title={title}
-            maximizeHandler={maximizeHandler}
-            initializeHandler={initializeHandler}
             moveHandler={moveHandler()}
             isFullScreen={isFullscreen[title]}
           />

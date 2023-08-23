@@ -5,8 +5,6 @@ import useTopbarButtons from "@/utills/useTopbarButtons";
 
 export interface TopBarProps {
   title: AppTitle;
-  maximizeHandler: () => void;
-  initializeHandler: () => void;
   isFullScreen: boolean;
   moveHandler: {
     onMouseDown: (e: React.MouseEvent<Element, MouseEvent>) => void;
@@ -16,15 +14,11 @@ export interface TopBarProps {
 const ButtonColors = ["red", "yellow", "green"] as const;
 
 export default function TopBar({
-  maximizeHandler,
-  initializeHandler,
   moveHandler,
   title,
   isFullScreen,
 }: TopBarProps) {
   const topbarHookProps = {
-    maximizeHandler,
-    initializeHandler,
     title,
   };
   const { onFullscreenHandler, onCloseHandler, onHiddenHandler } =
@@ -41,13 +35,13 @@ export default function TopBar({
       className="w-full px-2 py-2 bg-gray-800 "
       {...(!isFullScreen && { ...moveHandler })}
     >
-      <div className="flex justify-around w-16">
+      <div className="flex justify-around w-16 group">
         {ButtonColors.map((color) => (
           <TopBarButton
             key={color}
             color={color}
             browserButtonHandler={browserButtonHandler}
-            title={title}
+            isFull={isFullScreen}
           />
         ))}
       </div>
