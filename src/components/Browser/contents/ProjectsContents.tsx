@@ -1,5 +1,6 @@
+"use client";
 import Link from "next/link";
-import CarouserlSlide from "./CarouselSlide";
+import CarouserlSlide from "./carousel/CarouselSlide";
 import {
   FcBusinessman,
   FcBrokenLink,
@@ -7,6 +8,7 @@ import {
   FcIdea,
   FcRating,
 } from "react-icons/fc";
+import { useRef } from "react";
 
 interface ProjectProps {
   data: {
@@ -29,13 +31,19 @@ interface ProjectProps {
 export default function ProjectsContents({ data, w }: ProjectProps) {
   const projecType = data.isTeam ? "팀 프로젝트" : "개인 프로젝트";
   const part = data.isTeam ? "담당 기능" : "주요 기능";
+  const slideRef = useRef<HTMLDivElement>(null);
+  const slideBoundary = slideRef.current;
+
   return (
     <>
       {/* image slide div*/}
-      <div>
-        <CarouserlSlide images={data.images} w={w} />
+      <div
+        ref={slideRef}
+        className="relative mx-auto w-full max-w-[1000px] h-max min-h-[308px]"
+      >
+        <CarouserlSlide images={data.images} boundary={slideBoundary} w={w} />
       </div>
-      <div className="w-full p-8 ">
+      <div className="w-full p-8 h-[300px] mx-auto">
         <div className=" max-w-[1300px] w-full mx-auto">
           <h1 className="mb-2 text-3xl font-semibold">{data.name}</h1>
           <p className="mb-1 ml-1 font-semibold">{projecType}</p>
