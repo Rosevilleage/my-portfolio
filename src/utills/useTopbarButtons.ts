@@ -36,10 +36,8 @@ export default function useTopbarButtons({
     dispatch(bringFront(title));
     if (!isFullScreen) {
       dispatch(setFull(title));
-      maximizeHandler();
     } else {
       dispatch(setInit(title));
-      initializeHandler();
     }
   });
 
