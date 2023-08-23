@@ -9,29 +9,10 @@ import CarouselDot from "./CarouselDot";
 interface CarouselProps {
   images: string[];
   boundary: HTMLDivElement | null;
-  w: number;
 }
 
-export default function CarouserlSlide({ images, boundary, w }: CarouselProps) {
+export default function CarouserlSlide({ images, boundary }: CarouselProps) {
   const [size, setSize] = useState({ w: 500, h: 308 });
-
-  useLayoutEffect(() => {
-    const observer = new ResizeObserver((entries) => {
-      const ent = entries[0];
-      const { width, height } = ent.contentRect;
-
-      setSize({
-        w: width,
-        h: height,
-      });
-    });
-    if (boundary) {
-      observer.observe(boundary);
-      return () => {
-        observer.unobserve(boundary);
-      };
-    }
-  }, [w]);
 
   const slideList = [images.at(-1), ...images, images.at(0)] as string[];
 
@@ -45,6 +26,23 @@ export default function CarouserlSlide({ images, boundary, w }: CarouselProps) {
     onMouseDown,
     onTransitionEnd,
   } = useCarousel(size.w, slideList.length);
+
+  const observer = new ResizeObserver((entries) => {
+    const ent = entries[0];
+    const { width, height } = ent.contentRect;
+
+    setSize({
+      w: width,
+      h: height,
+    });
+  });
+
+  useLayoutEffect(() => {
+    if (boundary) {
+      observer.observe(boundary);
+    }
+  }, [boundary]);
+
   return (
     <>
       <div className="w-full overflow-hidden h-max">
