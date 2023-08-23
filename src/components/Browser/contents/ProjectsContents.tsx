@@ -25,10 +25,9 @@ interface ProjectProps {
     mypart: string[];
     lessonLearn: string;
   };
-  w: number;
 }
 
-export default function ProjectsContents({ data, w }: ProjectProps) {
+export default function ProjectsContents({ data }: ProjectProps) {
   const projecType = data.isTeam ? "팀 프로젝트" : "개인 프로젝트";
   const part = data.isTeam ? "담당 기능" : "주요 기능";
   const slideRef = useRef<HTMLDivElement>(null);
@@ -41,7 +40,7 @@ export default function ProjectsContents({ data, w }: ProjectProps) {
         ref={slideRef}
         className="relative mx-auto w-full max-w-[1000px] h-max min-h-[308px]"
       >
-        <CarouserlSlide images={data.images} boundary={slideBoundary} w={w} />
+        <CarouserlSlide images={data.images} boundary={slideBoundary} />
       </div>
       <div className="w-full p-8 h-[300px] mx-auto">
         <div className=" max-w-[1300px] w-full mx-auto">

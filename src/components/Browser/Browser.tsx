@@ -73,7 +73,7 @@ export default function Browser({
             isFullScreen={isFullscreen[title]}
           />
           {/* fallback component */}
-          <Contents title={title} w={w} />
+          <Contents title={title} />
         </div>
         {/* BrowserResizer */}
         {!isFullscreen[title] &&
