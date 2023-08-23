@@ -20,7 +20,7 @@ export default function useCarousel(sliderWidth: number, slideLeng: number) {
     animationHandler();
   };
 
-  const dotHnadler = (idx: number) => {
+  const dotHandler = (idx: number) => {
     setCurrentIndex(inrange(idx, 0, slideLeng));
     animationHandler();
   };
@@ -29,7 +29,7 @@ export default function useCarousel(sliderWidth: number, slideLeng: number) {
     transX,
     animation,
     currentIndex,
-    dotHnadler,
+    dotHandler,
     nextChangeHandler,
     prevChangeHandler,
     onMouseDown: (clickEvent: React.MouseEvent<Element, MouseEvent>) => {
