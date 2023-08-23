@@ -4,9 +4,6 @@ import {
   AiOutlineShrink,
   AiOutlineMinus,
 } from "react-icons/ai";
-import { TopBarProps } from "./TopBar";
-import { AppTitle } from "@/redux/slices/openAppSlice";
-import { useAppDispatch } from "@/redux/hooks";
 
 const colorStyle = {
   red: "text-red-500 bg-red-500",
@@ -15,7 +12,7 @@ const colorStyle = {
 };
 
 const DefaultBtnStyle =
-  "flex items-center justify-center w-4 h-4 font-semibold rounded-full hover:text-black active:bg-gradient-to-br from-[rgba(0,0,0,0.3)] to-[rgba(0,0,0,0.3)] ";
+  "flex items-center justify-center w-4 h-4 font-semibold rounded-full group-hover:text-black active:bg-gradient-to-br from-[rgba(0,0,0,0.3)] to-[rgba(0,0,0,0.3)] ";
 
 interface TopBarButtonProps {
   color: "red" | "yellow" | "green";
@@ -30,13 +27,13 @@ interface TopBarButtonProps {
       onClick: () => void;
     };
   };
-  title: AppTitle;
+  isFull: boolean;
 }
 
 export default function TopBarButton({
   color,
   browserButtonHandler,
-  title,
+  isFull,
 }: TopBarButtonProps) {
   const iconSize = "14";
   return (
@@ -46,7 +43,12 @@ export default function TopBarButton({
     >
       {color === "red" && <AiOutlineClose size={iconSize} />}
       {color === "yellow" && <AiOutlineMinus size={iconSize} />}
-      {color === "green" && <AiOutlineArrowsAlt size={iconSize} />}
+      {color === "green" &&
+        (isFull ? (
+          <AiOutlineShrink size={iconSize} />
+        ) : (
+          <AiOutlineArrowsAlt size={iconSize} />
+        ))}
     </button>
   );
 }
