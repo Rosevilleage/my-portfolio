@@ -23,7 +23,7 @@ export default function CarouserlSlide({ images, boundary }: CarouselProps) {
     dotHandler,
     nextChangeHandler,
     prevChangeHandler,
-    onMouseDown,
+    onCarouselDrag,
     onTransitionEnd,
   } = useCarousel(size.w, slideList.length);
 
@@ -52,8 +52,8 @@ export default function CarouserlSlide({ images, boundary }: CarouselProps) {
             transform: `translateX(${-currentIndex * size.w + transX}px)`,
             transition: `transform ${animation ? 300 : 0}ms ease-in-out 0s`,
           }}
-          onMouseDown={onMouseDown}
           onTransitionEnd={onTransitionEnd}
+          {...onCarouselDrag()}
         >
           {slideList.map((img, i) => (
             <Image
