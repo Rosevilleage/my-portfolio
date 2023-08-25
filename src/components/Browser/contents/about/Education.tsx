@@ -10,11 +10,11 @@ export default function Education({ education }: EducationProps) {
   return (
     <div className="max-w-[1000px] w-full mx-auto mt-8">
       <h2 className="mb-8 text-3xl text-center">Education</h2>
-      <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(345px,1fr))] font-medium text-md">
+      <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(250px,1fr))] font-medium text-md">
         {education.map((log) => (
           <div
             key={log.name}
-            className="flex mb-5 rounded-lg bg-cyan-700 h-[160px] shadow-gray-300 shadow-lg"
+            className="flex mb-5 rounded-lg bg-cyan-700 min-h-[160px] h-full shadow-gray-300 shadow-lg"
           >
             <div className="flex flex-col items-center justify-center p-2 text-white">
               {log.ago.split("\n").map((time) => (

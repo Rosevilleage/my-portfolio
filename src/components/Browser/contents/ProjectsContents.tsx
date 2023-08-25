@@ -42,7 +42,7 @@ export default function ProjectsContents({ data }: ProjectProps) {
       >
         <CarouserlSlide images={data.images} boundary={slideBoundary} />
       </div>
-      <div className="w-full p-8 h-[300px] mx-auto">
+      <div className="w-full p-8 min-h-[300px] mx-auto">
         <div className=" max-w-[1300px] w-full mx-auto">
           <h1 className="mb-2 text-3xl font-semibold">{data.name}</h1>
           <p className="mb-1 ml-1 font-semibold">{projecType}</p>
