@@ -45,7 +45,7 @@ export default function DesktopBoundary() {
             />
           )
       )}
-      <Doc />
+      <Doc boundaryCur={boundaryCur} />
     </div>
   );
 }
