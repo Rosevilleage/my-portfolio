@@ -1,10 +1,10 @@
-import { CircleProps, centerPosition } from "./CircleConfig";
+import { CircleProps, circlePos } from "./CircleConfig";
 
 export default function Circle05({ svgAnimate, divClass }: CircleProps) {
   const divCl = divClass ? divClass : "";
   const svgCl = svgAnimate ? svgAnimate : "";
   return (
-    <div className={divCl + centerPosition}>
+    <div className={divCl + circlePos}>
       <svg
         width="306"
         height="306"

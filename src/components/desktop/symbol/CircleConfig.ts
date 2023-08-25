@@ -6,6 +6,9 @@ export interface CircleProps {
 const centerPosition =
   " left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 absolute";
 
+const circlePos =
+  " left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 absolute max-md:hidden";
+
 const spining = {
   "1s": "animate-spining_1",
   "2s": "animate-spining_2",
@@ -27,4 +30,4 @@ const backspining = {
   "8s": "animate-backspining_8",
 };
 
-export { centerPosition, spining, backspining };
+export { centerPosition, spining, backspining, circlePos };
