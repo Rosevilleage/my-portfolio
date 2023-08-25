@@ -35,7 +35,7 @@ export default function TopBar({
       className="w-full px-2 py-2 bg-gray-800 "
       {...(!isFullScreen && { ...moveHandler })}
     >
-      <div className="flex justify-around w-16 group">
+      <div className="flex justify-around w-16 h-max group max-sm:block ">
         {ButtonColors.map((color) => (
           <TopBarButton
             key={color}
