@@ -16,7 +16,7 @@ export default function CarouselButton({
     display:
       "hidden group-hover:block max-sm:group-hover:hidden max-sm:group-active:block",
     boxStyle:
-      "absolute top-0 h-[calc(100%-35px)] flex items-center justify-center w-1/6 group hover:bg-[rgba(114,114,114,0.2)] max-sm:hover:bg-inherit max-sm:active:bg-[rgba(114,114,114,0.2)] ",
+      "absolute top-0 h-[calc(100%-35px)] flex items-center justify-center w-1/6 group hover:bg-[rgba(114,114,114,0.2)] max-sm:hover:bg-inherit ",
   };
   const carouselArrow = [
     {
