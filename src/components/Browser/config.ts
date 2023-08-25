@@ -1,9 +1,10 @@
 const AZIMUTH = ["nw", "ne", "se", "sw", "n", "e", "s", "w"] as const;
 const DEFUALT_W = 500;
 const DEFUALT_H = 300;
-const MIN_W = 500;
+const MIN_W = 320;
 const MIN_H = 300;
 const DESKTOP_MB = 62;
+const MOBILE_MB = 81;
 
 const RESIZERSTYLE = {
   nw: "w-3 h-3 -top-1 -left-1 cursor-nw-resize",
@@ -47,5 +48,6 @@ export {
   MIN_H,
   RESIZERSTYLE,
   DESKTOP_MB,
+  MOBILE_MB,
 };
 export type { Direction, BrowserConfig, MoveBoundary, BrowserTransformation };

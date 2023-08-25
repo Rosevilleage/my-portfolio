@@ -3,19 +3,31 @@ import {
   DEFUALT_W,
   DESKTOP_MB,
   Direction,
+  MIN_W,
+  MOBILE_MB,
 } from "@/components/Browser/config";
 import { useEffect, useState } from "react";
 import dragMouseDown from "./dragMouseDown";
 import { inrange } from "./inrange";
 import { updateBrowserConfig } from "./updateBrowserConfig";
+import { useAppDispatch } from "@/redux/hooks";
+import { AppTitle } from "@/redux/slices/openAppSlice";
+import { setFull } from "@/redux/slices/fullScreenSlice";
 
 interface UseBrowserProps {
   boundaryCur: HTMLDivElement;
   anyFull: boolean;
+  title: AppTitle;
 }
 
-export default function useBrowser({ boundaryCur, anyFull }: UseBrowserProps) {
+export default function useBrowser({
+  boundaryCur,
+  anyFull,
+  title,
+}: UseBrowserProps) {
   const [moveBoundary, setMoveBoundary] = useState({ w: 0, h: 0 });
+  const [marginBottom, setMarginBottom] = useState(DESKTOP_MB);
+  const dispatch = useAppDispatch();
 
   const [browserConfig, setBrowserConfig] = useState({
     x: 0,
@@ -33,10 +45,17 @@ export default function useBrowser({ boundaryCur, anyFull }: UseBrowserProps) {
       h: height,
     });
 
+    if (width < 640) {
+      setMarginBottom(MOBILE_MB);
+      dispatch(setFull(title));
+    } else {
+      setMarginBottom(DESKTOP_MB);
+    }
+
     setBrowserConfig({
-      x: Math.floor(width / 2 - DEFUALT_W / 2),
+      x: Math.floor(width / 2 - inrange(width, MIN_W, DEFUALT_W) / 2),
       y: Math.floor(height / 2 - DEFUALT_H / 2),
-      w: DEFUALT_W,
+      w: inrange(width, MIN_W, DEFUALT_W),
       h: DEFUALT_H,
     });
   }, [height, width]);
@@ -48,7 +67,7 @@ export default function useBrowser({ boundaryCur, anyFull }: UseBrowserProps) {
         browserConfig,
         interval: { x: X, y: Y },
         moveBoundary,
-        limitedY: anyFull ? 0 : DESKTOP_MB,
+        limitedY: anyFull ? 0 : marginBottom,
       };
       setBrowserConfig(updateBrowserConfig(input));
     }, true);
@@ -65,7 +84,7 @@ export default function useBrowser({ boundaryCur, anyFull }: UseBrowserProps) {
 
   const moveHandler = () =>
     dragMouseDown((intervalX, intervalY) => {
-      const limitedY = anyFull ? 0 : DESKTOP_MB;
+      const limitedY = anyFull ? 0 : marginBottom;
       setBrowserConfig({
         x: inrange(x + intervalX, 0, moveBoundary.w - w),
         y: inrange(y + intervalY, 0, moveBoundary.h - h - limitedY),

@@ -36,6 +36,7 @@ export default function Browser({
   const { browserConfig, resizeHandler, moveHandler } = useBrowser({
     boundaryCur,
     anyFull,
+    title,
   });
   const { x, y, w, h } = browserConfig;
 
@@ -49,7 +50,7 @@ export default function Browser({
     <>
       <div
         id={`${title}-container`}
-        className={"absolute " + browserHiddenSyle}
+        className={browserHiddenSyle + " absolute"}
         style={{
           left: isFullscreen[title] ? 0 : isHidden ? "50%" : x,
           top: isFullscreen[title] ? 0 : isHidden ? "100%" : y,
@@ -63,7 +64,7 @@ export default function Browser({
         {/* BrowserViewport */}
         <div
           className={
-            "h-full w-full shadow-xl transition-[shadow,transform] overflow-hidden " +
+            "h-full w-full shadow-xl transition-[shadow,transform] overflow-x-hidden " +
             browserStyle
           }
         >
