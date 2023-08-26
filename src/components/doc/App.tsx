@@ -2,10 +2,10 @@ import { AppTitle } from "@/redux/slices/openAppSlice";
 import Image from "next/image";
 
 const APPIMAGES = {
-  about: "/images/about.png",
-  cocktail: "/images/cocktail.png",
-  todo: "/images/todo.png",
-  portfolio: "/images/portfolio.png",
+  about: "/images/about.svg",
+  cocktail: "/images/cocktail.svg",
+  todo: "/images/todo.svg",
+  portfolio: "/images/portfolio.svg",
 };
 
 interface AppProps {
