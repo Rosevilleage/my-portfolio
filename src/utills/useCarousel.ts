@@ -39,7 +39,10 @@ export default function useCarousel(sliderWidth: number, slideLeng: number) {
   };
 
   const onCarouselDrag = () => {
-    if (isMobile) {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(hover: none) and (pointer: coarse)").matches
+    ) {
       return {
         onTouchStart: (touchEvent: React.TouchEvent<HTMLDivElement>) => {
           const touchMoveHandler = (moveEvent: TouchEvent) => {
@@ -68,26 +71,27 @@ export default function useCarousel(sliderWidth: number, slideLeng: number) {
           });
         },
       };
+    } else {
+      return {
+        onMouseDown: (clickEvent: React.MouseEvent<Element, MouseEvent>) => {
+          const mouseMoveHandler = (moveEvent: MouseEvent) => {
+            const deltaX = moveEvent.pageX - clickEvent.pageX;
+
+            onDragChange(deltaX);
+          };
+
+          const mouseUpHandler = (moveEvent: MouseEvent) => {
+            const deltaX = moveEvent.pageX - clickEvent.pageX;
+
+            onDragEnd(deltaX);
+            document.removeEventListener("mousemove", mouseMoveHandler);
+          };
+
+          document.addEventListener("mousemove", mouseMoveHandler);
+          document.addEventListener("mouseup", mouseUpHandler, { once: true });
+        },
+      };
     }
-    return {
-      onmousedown: (clickEvent: React.MouseEvent<Element, MouseEvent>) => {
-        const mouseMoveHandler = (moveEvent: MouseEvent) => {
-          const deltaX = moveEvent.pageX - clickEvent.pageX;
-
-          onDragChange(deltaX);
-        };
-
-        const mouseUpHandler = (moveEvent: MouseEvent) => {
-          const deltaX = moveEvent.pageX - clickEvent.pageX;
-
-          onDragEnd(deltaX);
-          document.removeEventListener("mousemove", mouseMoveHandler);
-        };
-
-        document.addEventListener("mousemove", mouseMoveHandler);
-        document.addEventListener("mouseup", mouseUpHandler, { once: true });
-      },
-    };
   };
 
   return {
