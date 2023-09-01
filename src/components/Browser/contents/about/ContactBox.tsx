@@ -28,7 +28,7 @@ type ContactKey = "email" | "phone" | "github" | "blog";
 export default function ContactBox({ contact }: ConTactProps) {
   const contactKeys = Object.keys(contact);
   return (
-    <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(250px,1fr))] max-w-[1100px] w-full mt-5 mx-auto">
+    <div className="grid gap-5 grid-cols-[repeat(auto-fit,minmax(260px,1fr))] max-w-[810px] w-full mt-5 mx-auto">
       {contactKeys.map((key) => (
         <div
           key={key}

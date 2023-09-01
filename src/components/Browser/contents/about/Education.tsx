@@ -10,7 +10,7 @@ export default function Education({ education }: EducationProps) {
   return (
     <div className="max-w-[1000px] w-full mx-auto mt-8">
       <h2 className="mb-8 text-3xl text-center">Education</h2>
-      <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(250px,1fr))] font-medium text-md">
+      <div className="grid gap-5 grid-cols-[repeat(auto-fit,minmax(260px,1fr))] font-medium text-md">
         {education.map((log) => (
           <div
             key={log.name}
