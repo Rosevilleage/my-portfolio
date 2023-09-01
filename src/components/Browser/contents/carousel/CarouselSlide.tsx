@@ -64,6 +64,8 @@ export default function CarouserlSlide({ images, boundary }: CarouselProps) {
               height={size.h}
               priority
               draggable={false}
+              placeholder={"blur"}
+              blurDataURL={img}
             />
           ))}
         </div>
