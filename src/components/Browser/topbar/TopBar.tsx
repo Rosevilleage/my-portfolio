@@ -6,9 +6,15 @@ import useTopbarButtons from "@/utills/useTopbarButtons";
 export interface TopBarProps {
   title: AppTitle;
   isFullScreen: boolean;
-  moveHandler: {
-    onMouseDown: (e: React.MouseEvent<Element, MouseEvent>) => void;
-  };
+  moveHandler:
+    | {
+        onTouchStart: (touchEvent: React.TouchEvent<HTMLDivElement>) => void;
+        onMouseDown?: undefined;
+      }
+    | {
+        onMouseDown: (e: React.MouseEvent<Element, MouseEvent>) => void;
+        onTouchStart?: undefined;
+      };
 }
 
 const ButtonColors = ["red", "yellow", "green"] as const;
