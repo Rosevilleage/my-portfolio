@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Browser from "../Browser/Browser";
 import { APPList } from "./config";
 import { useAppSelector } from "@/redux/hooks";
@@ -23,7 +23,7 @@ export default function DesktopBoundary() {
 
   const [isFirst, setIsFirst] = useState(true);
   const closeIntro = () => setIsFirst(false);
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (typeof window !== "undefined") {
       if (sessionStorage.getItem("visit")) closeIntro();
       else sessionStorage.setItem("visit", "true");
