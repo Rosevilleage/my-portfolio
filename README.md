@@ -18,7 +18,6 @@ next js와 tailwind를 사용해 제작한 mac os 컨셉의 포트폴리오 입�
 	<img src="https://img.shields.io/badge/next-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
 	<img src="https://img.shields.io/badge/tialwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
 	<img src="https://img.shields.io/badge/reduxtoolkit-764ABC?style=for-the-badge&logo=redux&logoColor=white">
-	<img src="https://img.shields.io/badge/reactslick-0063DC?style=for-the-badge">
 	<img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
 	<img src="https://img.shields.io/badge/reacticons-D8352A?style=for-the-badge&logo=react&logoColor=white">
 	<img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">
@@ -129,40 +128,71 @@ function Browser() {
 
 <h3>image slide</h3>
 
-이미지가 첨부된 contents에 react-slick 라이브러리를 통해 반응형 slide를 구현했습니다. browser의 크기에 따라 slider의 너비와 높이가 변화합니다.
+이미지가 첨부된 contents에 반응형 slide를 구현했습니다. browser의 크기에 따라 slider의 너비와 높이가 변화하고, drag, click 을 통해 이미지를 넘길 수 있습니다.
+resize observer를 통해 상위 컴포넌트의 크기를 측정하고, custom hook을 통해 mouse event, click event를 정의하여서 동작하도록 구현했습니다.
 
 ```tsx
-function CarouserlSlide({ images, w }: CarouselProps) {
-  const settings = {
-    arrows: false,
-    dots: true,
-    infinite: false,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    variableWidth: true,
-  };
+export default function CarouserlSlide({ images, boundary }: CarouselProps) {
+  const [size, setSize] = useState({ w: 500, h: 308 });
+
+  const slideList = [images.at(-1), ...images, images.at(0)] as string[];
+
+  const {
+    transX,
+    animation,
+    currentIndex,
+    dotHandler,
+    nextChangeHandler,
+    prevChangeHandler,
+    onCarouselDrag,
+    onTransitionEnd,
+  } = useCarousel(size.w, slideList.length);
+
+  const observer = new ResizeObserver((entries) => {
+    const ent = entries[0];
+    const { width, height } = ent.contentRect;
+
+    setSize({
+      w: width,
+      h: height,
+    });
+  });
+
+  useLayoutEffect(() => {
+    if (boundary) {
+      observer.observe(boundary);
+    }
+  }, [boundary]);
+
   return (
-    <div>
-      <Slider {...settings}>
-        {images.map((img, i) => (
-          <div
-            key={img}
-            style={{
-              width: w,
-              height: w / 2,
-            }}
-          >
+    <>
+      <div>
+        <div
+          style={{
+            transform: `translateX(${-currentIndex * size.w + transX}px)`,
+            transition: `transform ${animation ? 300 : 0}ms ease-in-out 0s`,
+          }}
+          onTransitionEnd={onTransitionEnd}
+          {...onCarouselDrag()}
+        >
+          {slideList.map((img, i) => (
             <Image
+              key={i + img}
               src={img}
               alt={`image${i}`}
-              width={w / 1.3}
-              height={w / 3}
-              style={{ margin: "auto", borderRadius: "0.5rem" }}
+              width={size.w}
+              height={size.h}
+              priority
+              draggable={false}
             />
-          </div>
-        ))}
-      </Slider>
-    </div>
+          ))}
+        </div>
+        <CarouselButton
+          buttonMaterials={{ nextChangeHandler, prevChangeHandler }}
+        />
+        <CarouselDot dotMaterials={{ images, dotHandler, currentIndex }} />
+      </div>
+    </>
   );
 }
 ```
