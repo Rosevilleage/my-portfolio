@@ -5,7 +5,7 @@ interface AboutContentProps {
   data: {
     name: string;
     introduction: string;
-    background: string;
+    background: string[];
     contact: {
       email: string;
       phone: string;
@@ -33,11 +33,13 @@ export default function AboutMe({ data }: AboutContentProps) {
       </div>
       <div className="w-full h-full ">
         <div className="p-8 mx-auto text-base font-medium w-full max-w-[1000px]">
-          <div className="mx-auto ">
-            {data.background.split("\n").map((text) => (
-              <p key={text}>{text}</p>
+          <ul className="mx-auto list-disc">
+            {data.background.map((text) => (
+              <li key={text} className="leading-6">
+                {text}
+              </li>
             ))}
-          </div>
+          </ul>
           <ContactBox contact={data.contact} />
           <SkillsBox skills={data.skill} />
           <Education education={data.education} />
