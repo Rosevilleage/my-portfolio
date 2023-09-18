@@ -38,7 +38,7 @@ export default function ProjectsContents({ data }: ProjectProps) {
       {/* image slide div*/}
       <div
         ref={slideRef}
-        className="relative mx-auto w-full max-w-[1000px] h-max min-h-[308px]"
+        className="relative mx-auto w-full max-w-[1000px] h-max"
       >
         <CarouserlSlide images={data.images} boundary={slideBoundary} />
       </div>

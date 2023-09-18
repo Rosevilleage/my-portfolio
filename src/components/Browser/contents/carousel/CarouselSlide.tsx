@@ -45,7 +45,7 @@ export default function CarouserlSlide({ images, boundary }: CarouselProps) {
 
   return (
     <>
-      <div className="w-full overflow-hidden h-max">
+      <div className="w-full overflow-hidden h-max min-h-[308px]">
         <div
           className="flex items-center h-max"
           style={{
