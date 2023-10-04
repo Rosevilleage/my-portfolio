@@ -11,10 +11,11 @@ import { bringFront } from "@/redux/slices/zIndexSlice";
 import Contents from "./contents/Contents";
 
 interface BrowserProps {
-  boundaryCur: HTMLDivElement;
+  boundaryCur: HTMLDivElement | null;
   title: AppTitle;
   zIndex: number | undefined;
   isHidden: boolean;
+  isOpen: boolean;
 }
 const anyTruthy = (state: AppState) => {
   const { about, cocktail, todo, portfolio } = state;
@@ -26,13 +27,12 @@ export default function Browser({
   title,
   zIndex,
   isHidden,
+  isOpen,
 }: BrowserProps) {
   const dispatch = useAppDispatch();
   const isFullscreen = useAppSelector((state) => state.fullScreen);
   const browserAnimate = useAppSelector((state) => state.browserAnimate);
   const anyFull = anyTruthy(isFullscreen);
-  if (boundaryCur) {
-  }
   const { browserConfig, resizeHandler, moveHandler } = useBrowser({
     boundaryCur,
     anyFull,
@@ -44,22 +44,24 @@ export default function Browser({
     ? ""
     : "rounded-xl ring-1 ring-slate-600";
 
-  const browserHiddenSyle = isHidden ? "scale-0 -translate-x-1/2" : "";
+  const browserHiddenStyle =
+    isHidden || !isOpen ? "scale-0 -translate-x-1/2" : "";
 
   return (
     <>
       <div
         id={`${title}-container`}
-        className={browserHiddenSyle + " absolute "}
+        className={browserHiddenStyle + " absolute "}
         style={{
-          left: isFullscreen[title] ? 0 : isHidden ? "50%" : x,
-          top: isFullscreen[title] ? 0 : isHidden ? "100%" : y,
+          left: isFullscreen[title] ? 0 : isHidden || !isOpen ? "50%" : x,
+          top: isFullscreen[title] ? 0 : isHidden || !isOpen ? "100%" : y,
           width: isFullscreen[title] ? "100%" : w,
           height: isFullscreen[title] ? "100%" : h,
           zIndex: zIndex || 1,
           transition: `all ${browserAnimate[title] ? 300 : 0}ms ease 0s`,
         }}
         onClick={() => dispatch(bringFront(title))}
+        aria-disabled={!isOpen}
       >
         {/* BrowserViewport */}
         <div

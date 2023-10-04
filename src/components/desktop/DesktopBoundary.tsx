@@ -10,7 +10,7 @@ import Intro from "../intro/Intro";
 
 export default function DesktopBoundary() {
   const boundaryRef = useRef<HTMLDivElement>(null);
-  const boundaryCur = boundaryRef.current as HTMLDivElement;
+  const boundaryCur = boundaryRef.current;
 
   const isOpenApp = useAppSelector((state) => state.isOpenApp);
   const zIndexArr = useAppSelector((state) => state.zIndex);
@@ -33,18 +33,16 @@ export default function DesktopBoundary() {
   return (
     <div className="relative w-full h-full overflow-hidden" ref={boundaryRef}>
       <Intro isFirst={isFirst} closeIntro={closeIntro} />
-      {APPList.map(
-        (app) =>
-          isOpenApp[app] && (
-            <Browser
-              key={`${app} browser`}
-              boundaryCur={boundaryCur}
-              title={app}
-              zIndex={getBrowserZIndex(app)}
-              isHidden={isHiddenApp[app]}
-            />
-          )
-      )}
+      {APPList.map((app) => (
+        <Browser
+          key={`${app} browser`}
+          boundaryCur={boundaryCur}
+          title={app}
+          zIndex={getBrowserZIndex(app)}
+          isHidden={isHiddenApp[app]}
+          isOpen={isOpenApp[app]}
+        />
+      ))}
       <Doc boundaryCur={boundaryCur} />
     </div>
   );
