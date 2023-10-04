@@ -22,18 +22,17 @@ export default function Doc({
   const [docTop, setDocTop] = useState(false);
   const dispatch = useAppDispatch();
 
-  const observer = new ResizeObserver((entries) => {
-    const { width } = entries[0].contentRect;
-
-    if (width < 640) {
-      setMoblie(true);
-    } else {
-      setMoblie(false);
-    }
-  });
-
   useLayoutEffect(() => {
-    if (boundaryCur) {
+    if (boundaryCur && typeof window !== "undefined") {
+      const observer = new ResizeObserver((entries) => {
+        const { width } = entries[0].contentRect;
+
+        if (width < 640) {
+          setMoblie(true);
+        } else {
+          setMoblie(false);
+        }
+      });
       observer.observe(boundaryCur);
     }
   }, [boundaryCur]);

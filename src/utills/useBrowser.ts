@@ -37,32 +37,31 @@ export default function useBrowser({
   });
   const { x, y, w, h } = browserConfig;
 
-  const observer = new ResizeObserver((entries) => {
-    const ent = entries[0];
-    const { width, height } = ent.contentRect;
-
-    setMoveBoundary({
-      w: width,
-      h: height,
-    });
-
-    if (width < 640) {
-      setMarginBottom(MOBILE_MB);
-      dispatch(setFull(title));
-    } else {
-      setMarginBottom(DESKTOP_MB);
-    }
-
-    setBrowserConfig({
-      x: Math.floor(width / 2 - inrange(width, MIN_W, DEFUALT_W) / 2),
-      y: Math.floor(height / 2 - DEFUALT_H / 2),
-      w: inrange(width, MIN_W, DEFUALT_W),
-      h: DEFUALT_H,
-    });
-  });
-
   useEffect(() => {
-    if (boundaryCur) {
+    if (boundaryCur && typeof window !== "undefined") {
+      const observer = new ResizeObserver((entries) => {
+        const ent = entries[0];
+        const { width, height } = ent.contentRect;
+
+        setMoveBoundary({
+          w: width,
+          h: height,
+        });
+
+        if (width < 640) {
+          setMarginBottom(MOBILE_MB);
+          dispatch(setFull(title));
+        } else {
+          setMarginBottom(DESKTOP_MB);
+        }
+
+        setBrowserConfig({
+          x: Math.floor(width / 2 - inrange(width, MIN_W, DEFUALT_W) / 2),
+          y: Math.floor(height / 2 - DEFUALT_H / 2),
+          w: inrange(width, MIN_W, DEFUALT_W),
+          h: DEFUALT_H,
+        });
+      });
       observer.observe(boundaryCur);
     }
   }, [boundaryCur]);

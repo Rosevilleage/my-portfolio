@@ -27,18 +27,17 @@ export default function CarouserlSlide({ images, boundary }: CarouselProps) {
     onTransitionEnd,
   } = useCarousel(size.w, slideList.length);
 
-  const observer = new ResizeObserver((entries) => {
-    const ent = entries[0];
-    const { width, height } = ent.contentRect;
-
-    setSize({
-      w: width,
-      h: height,
-    });
-  });
-
   useLayoutEffect(() => {
-    if (boundary) {
+    if (boundary && typeof window !== "undefined") {
+      const observer = new ResizeObserver((entries) => {
+        const ent = entries[0];
+        const { width, height } = ent.contentRect;
+
+        setSize({
+          w: width,
+          h: height,
+        });
+      });
       observer.observe(boundary);
     }
   }, [boundary]);
