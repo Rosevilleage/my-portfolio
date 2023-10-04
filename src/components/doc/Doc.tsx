@@ -10,21 +10,31 @@ import { bringFront } from "@/redux/slices/zIndexSlice";
 import { useLayoutEffect, useState } from "react";
 import { BsChevronDoubleUp, BsChevronDoubleDown } from "react-icons/bs";
 
-export default function Doc({ boundaryCur }: { boundaryCur: HTMLDivElement }) {
+export default function Doc({
+  boundaryCur,
+}: {
+  boundaryCur: HTMLDivElement | null;
+}) {
   const isHiddenApp = useAppSelector((state) => state.isHiddenApp);
   const isOpenApp = useAppSelector((state) => state.isOpenApp);
   const isFullScreen = useAppSelector((state) => state.fullScreen);
   const [moblie, setMoblie] = useState(false);
   const [docTop, setDocTop] = useState(false);
   const dispatch = useAppDispatch();
+
+  const observer = new ResizeObserver((entries) => {
+    const { width } = entries[0].contentRect;
+
+    if (width < 640) {
+      setMoblie(true);
+    } else {
+      setMoblie(false);
+    }
+  });
+
   useLayoutEffect(() => {
     if (boundaryCur) {
-      const { width } = boundaryCur.getBoundingClientRect();
-      if (width < 640) {
-        setMoblie(true);
-      } else {
-        setMoblie(false);
-      }
+      observer.observe(boundaryCur);
     }
   }, [boundaryCur]);
 

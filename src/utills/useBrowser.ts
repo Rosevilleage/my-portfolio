@@ -15,7 +15,7 @@ import { AppTitle } from "@/redux/slices/openAppSlice";
 import { setFull } from "@/redux/slices/fullScreenSlice";
 
 interface UseBrowserProps {
-  boundaryCur: HTMLDivElement;
+  boundaryCur: HTMLDivElement | null;
   anyFull: boolean;
   title: AppTitle;
 }
@@ -35,11 +35,12 @@ export default function useBrowser({
     w: 0,
     h: 0,
   });
-  const boundary = boundaryCur.getBoundingClientRect();
-  const { width, height } = boundary;
   const { x, y, w, h } = browserConfig;
 
-  useEffect(() => {
+  const observer = new ResizeObserver((entries) => {
+    const ent = entries[0];
+    const { width, height } = ent.contentRect;
+
     setMoveBoundary({
       w: width,
       h: height,
@@ -58,7 +59,13 @@ export default function useBrowser({
       w: inrange(width, MIN_W, DEFUALT_W),
       h: DEFUALT_H,
     });
-  }, [height, width]);
+  });
+
+  useEffect(() => {
+    if (boundaryCur) {
+      observer.observe(boundaryCur);
+    }
+  }, [boundaryCur]);
 
   const resizeHandler = (direction: Direction) => {
     return dragMouseDown((X, Y) => {
