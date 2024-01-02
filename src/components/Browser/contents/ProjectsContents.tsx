@@ -117,7 +117,13 @@ export default function ProjectsContents({ data }: ProjectProps) {
               <FcIdea />
               <h2 className="ml-1">프로젝트를 통해 느낀점</h2>
             </div>
-            <p className="ml-1 text-lg">{data.lessonLearn}</p>
+            <ul className="ml-1">
+              {data.lessonLearn.split("\n").map((learn) => (
+                <li key={learn} className="text-lg ">
+                  {learn}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
