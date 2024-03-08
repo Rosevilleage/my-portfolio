@@ -1,6 +1,6 @@
 type SkillType =
   | "javascript"
-  | "html5"
+  | "html"
   | "css"
   | "react"
   | "styled-components"
@@ -9,7 +9,7 @@ type SkillType =
 export default function SkillsBox({ skills }: { skills: string[] }) {
   const skillColor = {
     javascript: "bg-yellow-400",
-    html5: "bg-orange-400 ",
+    html: "bg-orange-400 ",
     css: "bg-blue-700",
     typescript: "bg-sky-600",
     react: "bg-cyan-400",
