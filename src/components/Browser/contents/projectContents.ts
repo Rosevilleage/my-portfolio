@@ -149,10 +149,5 @@ export const aboutContent = {
         "두 번의 팀프로젝트 진행",
       ],
     },
-    {
-      ago: "2016.02\n ~ \n2022.02",
-      name: "평택대학교",
-      description: ["신학 / 실용음악 복수 전공"],
-    },
   ],
 };
