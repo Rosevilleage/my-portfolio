@@ -39,6 +39,10 @@ export default function CarouserlSlide({ images, boundary }: CarouselProps) {
         });
       });
       observer.observe(boundary);
+
+      return () => {
+        observer.unobserve(boundary);
+      };
     }
   }, [boundary]);
 
