@@ -2,10 +2,11 @@
 import { useAppSelector } from "@/redux/hooks";
 import { setInit, setFull } from "@/redux/slices/fullScreenSlice";
 import { veiwApp, hiddenApp } from "@/redux/slices/hiddenAppSlice";
-import { AppTitle, closeApp } from "@/redux/slices/openAppSlice";
+import { closeApp } from "@/redux/slices/openAppSlice";
 import { deleteZIndex, bringFront } from "@/redux/slices/zIndexSlice";
 import { useDispatch } from "react-redux";
 import useBrowserAnimateTrigger from "./useBrowserAnimateTrigger";
+import { AppTitle } from "@/components/desktop/config";
 
 interface UseTopBarButtonProps {
   title: AppTitle;

@@ -11,8 +11,8 @@ import dragMouseDown from "./dragMouseDown";
 import { inrange } from "./inrange";
 import { updateBrowserConfig } from "./updateBrowserConfig";
 import { useAppDispatch } from "@/redux/hooks";
-import { AppTitle } from "@/redux/slices/openAppSlice";
 import { setFull } from "@/redux/slices/fullScreenSlice";
+import { AppTitle } from "@/components/desktop/config";
 
 interface UseBrowserProps {
   boundaryCur: HTMLDivElement | null;

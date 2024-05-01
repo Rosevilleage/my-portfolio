@@ -1,9 +1,9 @@
+import { AppTitle } from "@/components/desktop/config";
 import { useAppDispatch } from "@/redux/hooks";
 import {
   browserAnimateOn,
   browserAnimateOff,
 } from "@/redux/slices/browserAnimateSlice";
-import { AppTitle } from "@/redux/slices/openAppSlice";
 
 export default function useBrowserAnimateTrigger(
   title: AppTitle,
