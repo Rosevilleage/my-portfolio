@@ -1,5 +1,6 @@
+import { AppTitle } from "@/components/desktop/config";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { AppTitle } from "./openAppSlice";
+
 const initialState: string[] = [];
 const zIndexSlice = createSlice({
   name: "zIndex",

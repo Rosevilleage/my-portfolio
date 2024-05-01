@@ -1,56 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
-
-export interface AppState {
-  about: boolean;
-  cocktail: boolean;
-  todo: boolean;
-  portfolio: boolean;
-}
-
-export type AppTitle = "about" | "cocktail" | "todo" | "portfolio";
-
-const initialState = {
-  about: false,
-  cocktail: false,
-  todo: false,
-  portfolio: false,
-};
+import { AppState, AppTitle, CONTENTS } from "@/components/desktop/config";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const openAppSlice = createSlice({
   name: "openApp",
-  initialState,
+  initialState: CONTENTS,
   reducers: {
-    closeApp: (state, action) => {
-      switch (action.payload) {
-        case "about":
-          state.about = false;
-          break;
-        case "cocktail":
-          state.cocktail = false;
-          break;
-        case "todo":
-          state.todo = false;
-          break;
-        case "portfolio":
-          state.portfolio = false;
-          break;
-      }
+    closeApp: (state: AppState, action: PayloadAction<AppTitle>) => {
+      state[action.payload] = false;
     },
-    openApp: (state, action) => {
-      switch (action.payload) {
-        case "about":
-          state.about = true;
-          break;
-        case "cocktail":
-          state.cocktail = true;
-          break;
-        case "todo":
-          state.todo = true;
-          break;
-        case "portfolio":
-          state.portfolio = true;
-          break;
-      }
+    openApp: (state: AppState, action: PayloadAction<AppTitle>) => {
+      state[action.payload] = true;
     },
   },
 });
