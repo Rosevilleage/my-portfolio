@@ -1,7 +1,7 @@
-import { AppTitle } from "@/redux/slices/openAppSlice";
 import { ProjectContents, aboutContent } from "./projectContents";
 import ProjectsContents from "./ProjectsContents";
 import AboutMe from "./about/AboutMe";
+import { AppTitle } from "@/components/desktop/config";
 
 interface ContentProps {
   title: AppTitle;

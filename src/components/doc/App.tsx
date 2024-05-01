@@ -1,5 +1,5 @@
-import { AppTitle } from "@/redux/slices/openAppSlice";
 import Image from "next/image";
+import { AppTitle } from "../desktop/config";
 
 const APPIMAGES = {
   about: "/images/about.svg",

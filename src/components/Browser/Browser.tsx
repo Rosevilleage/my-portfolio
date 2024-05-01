@@ -4,11 +4,11 @@ import React from "react";
 import { AZIMUTH } from "./config";
 import BrowserResizer from "./BrowserResizer";
 import TopBar from "./topbar/TopBar";
-import { AppState, AppTitle } from "@/redux/slices/openAppSlice";
 import useBrowser from "@/utills/useBrowser";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { bringFront } from "@/redux/slices/zIndexSlice";
 import Contents from "./contents/Contents";
+import { AppTitle, AppState } from "../desktop/config";
 
 interface BrowserProps {
   boundaryCur: HTMLDivElement | null;

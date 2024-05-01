@@ -1,6 +1,6 @@
 "use client";
+import { AppTitle } from "@/components/desktop/config";
 import TopBarButton from "./TopBarButton";
-import { AppTitle } from "@/redux/slices/openAppSlice";
 import useTopbarButtons from "@/utills/useTopbarButtons";
 
 export interface TopBarProps {

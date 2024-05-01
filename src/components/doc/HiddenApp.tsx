@@ -1,6 +1,6 @@
-import { AppTitle } from "@/redux/slices/openAppSlice";
 import useBrowserAnimateTrigger from "@/utills/useBrowserAnimateTrigger";
 import Image from "next/image";
+import { AppTitle } from "../desktop/config";
 
 const HIDENAPPIMAGE = {
   about: "/images/aboutHidden.png",

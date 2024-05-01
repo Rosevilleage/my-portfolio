@@ -2,9 +2,8 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Browser from "../Browser/Browser";
-import { APPList } from "./config";
+import { APPList, AppTitle } from "./config";
 import { useAppSelector } from "@/redux/hooks";
-import { AppTitle } from "@/redux/slices/openAppSlice";
 import Doc from "../doc/Doc";
 import Intro from "../intro/Intro";
 

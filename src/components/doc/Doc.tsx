@@ -3,9 +3,9 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import App from "./App";
 import HiddenApp from "./HiddenApp";
-import { AppState, AppTitle, openApp } from "@/redux/slices/openAppSlice";
+import { openApp } from "@/redux/slices/openAppSlice";
 import { veiwApp } from "@/redux/slices/hiddenAppSlice";
-import { APPList } from "../desktop/config";
+import { APPList, AppState, AppTitle } from "../desktop/config";
 import { bringFront } from "@/redux/slices/zIndexSlice";
 import { useLayoutEffect, useState } from "react";
 import { BsChevronDoubleUp, BsChevronDoubleDown } from "react-icons/bs";
