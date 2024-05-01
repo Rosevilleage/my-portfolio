@@ -6,6 +6,7 @@ const APPIMAGES = {
   cocktail: "/images/cocktail.svg",
   todo: "/images/todo.svg",
   portfolio: "/images/portfolio.svg",
+  fitrace: "/images/fitrace.svg",
 };
 
 interface AppProps {

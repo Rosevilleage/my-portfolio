@@ -16,7 +16,7 @@ interface ProjectProps {
     name: string;
     images: string[];
     introduction: string;
-    url: {
+    url?: {
       github: string;
       deploy: string;
       blog: string;
@@ -56,37 +56,31 @@ export default function ProjectsContents({ data }: ProjectProps) {
             <p className="ml-1 text-lg">{data.introduction}</p>
           </div>
           {/* url a*/}
-          <div className="flex mb-8">
-            <div className="flex items-center mr-2 text-2xl font-medium">
-              <FcBrokenLink />
-              <h2 className="ml-2">URL :</h2>
+          {data.url && (
+            <div className="flex mb-8">
+              <div className="flex items-center mr-2 text-2xl font-medium">
+                <FcBrokenLink />
+                <h2 className="ml-2">URL :</h2>
+              </div>
+              {data.url &&
+                Object.keys(data.url).map((key) => {
+                  const link =
+                    data.url && data.url[key as keyof typeof data.url];
+
+                  return link ? (
+                    <Link
+                      key={key}
+                      href={link}
+                      target="_blank"
+                      className="p-1 ml-1 bg-blue-400 rounded-md text-yellow-50 "
+                    >
+                      {key}
+                    </Link>
+                  ) : undefined;
+                })}
             </div>
-            <Link
-              href={data.url.github}
-              target="_blank"
-              className="p-1 ml-1 bg-blue-400 rounded-md text-yellow-50 "
-            >
-              github
-            </Link>
-            {data.url.deploy && (
-              <Link
-                href={data.url.deploy}
-                target="_blank"
-                className="p-1 ml-1 bg-blue-400 rounded-md text-yellow-50"
-              >
-                deploy
-              </Link>
-            )}
-            {data.url.blog && (
-              <Link
-                href={data.url.blog}
-                target="_blank"
-                className="p-1 ml-1 bg-blue-400 rounded-md text-yellow-50"
-              >
-                blog
-              </Link>
-            )}
-          </div>
+          )}
+
           {/* stack p*/}
           <ul className="mb-8 list-disc list-inside ">
             <div className="flex items-center text-2xl font-medium">

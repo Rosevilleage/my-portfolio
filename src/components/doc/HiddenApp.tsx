@@ -7,6 +7,7 @@ const HIDENAPPIMAGE = {
   cocktail: "/images/cocktailHidden.png",
   todo: "/images/todoHidden.png",
   portfolio: "/images/portfolioHidden.png",
+  fitrace: "/images/fitraceHidden.png",
 };
 
 interface HiddenProps {

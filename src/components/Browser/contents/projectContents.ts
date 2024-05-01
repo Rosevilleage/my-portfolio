@@ -1,6 +1,40 @@
 const baseUrl = "/images/contentsImages/";
 
 export const ProjectContents = {
+  fitrace: {
+    isTeam: true,
+    name: "fitrace Admin Page",
+    images: [
+      baseUrl + "fitrace_admin1.png",
+      baseUrl + "fitrace_admin2.png",
+      baseUrl + "fitrace_admin3.png",
+      baseUrl + "fitrace_admin4.png",
+    ],
+    introduction:
+      "저의 첫 외주 작업 프로젝트로 운동 관리 애플리케이션의 관리자 페이지를 담당했습니다.",
+
+    stack: [
+      "create-react-app",
+      "react-router",
+      "styled-components",
+      "axios",
+      "date-fns",
+      "react-datepicker",
+      "react-chartjs-2",
+      "react-icons",
+      "react-cookie",
+    ],
+    mypart: [
+      "관리자 페이지 디자인 및 layout 설계",
+      "react-cookie와 axios interceptors를 통한 jwt 기반 관리자 로그인",
+      "react-datepicker를 통한 날짜 선택 및 표시",
+      "react-chartjs-2를 통해 통계 데이터를 차트로 표현",
+      "접속 기록을 달력 모달로 표시",
+      "서버로 부터 받은 excel 파일 다운로드 기능",
+    ],
+    lessonLearn: `요구사항에 따른 화면을 구성하기 위해 많은 고민을 하게된 프로젝트였습니다. 또한 사용자가 UI를 통해 기능을 예측할 수 있어야 한다는 조언을 통해 사용자가 판단하기에 적절하도록 기능을 분리해야 한다는 것을 알게되었습니다.
+     마지막으로 변경되는 요구사항을 직접 겪어보니 컴포넌트나 함수를 만들때 다른 컴포넌트나 함수에서 종속되지 않도록 설계를 해야할 필요성을 느끼게 되는 경험이었습니다.`,
+  },
   cocktail: {
     isTeam: true,
     name: "알딸딸: 나만의 칵테일 레시피",
