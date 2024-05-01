@@ -1,5 +1,6 @@
 const CONTENTS = {
   about: false,
+  fitrace: false,
   cocktail: false,
   todo: false,
   portfolio: false,
@@ -7,7 +8,7 @@ const CONTENTS = {
 
 const CONTENTS_LENG = 4;
 
-const APPList = ["about", "cocktail", "todo", "portfolio"] as const;
+const APPList = ["about", "fitrace", "cocktail", "todo", "portfolio"] as const;
 
 export { CONTENTS, CONTENTS_LENG, APPList };
 
