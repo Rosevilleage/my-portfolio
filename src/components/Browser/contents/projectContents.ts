@@ -5,10 +5,10 @@ export const ProjectContents = {
     isTeam: true,
     name: "fitrace Admin Page",
     images: [
-      baseUrl + "fitrace_admin1.png",
-      baseUrl + "fitrace_admin2.png",
-      baseUrl + "fitrace_admin3.png",
-      baseUrl + "fitrace_admin4.png",
+      baseUrl + "fitrace1.png",
+      baseUrl + "fitrace2.png",
+      baseUrl + "fitrace3.png",
+      baseUrl + "fitrace4.png",
     ],
     introduction:
       "저의 첫 외주 작업 프로젝트로 운동 관리 애플리케이션의 관리자 페이지를 담당했습니다.",
