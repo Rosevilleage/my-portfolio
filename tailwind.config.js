@@ -18,6 +18,9 @@ module.exports = {
       full: "100%",
     },
     extend: {
+      boxShadow: {
+        line: "0 0 10px 3px rgba(200,200,200,0.4)",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
