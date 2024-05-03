@@ -18,7 +18,6 @@ interface ProjectProps {
     };
     stack: string[];
     mypart: string[];
-    lessonLearn: string;
   };
 }
 
