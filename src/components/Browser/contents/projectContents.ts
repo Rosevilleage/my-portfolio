@@ -151,7 +151,6 @@ export const aboutContent = {
   ],
   contact: {
     email: "chanhee.frontend@gmail.com",
-    phone: "010-6508-3557",
     github: "https://github.com/Rosevilleage",
     blog: "https://velog.io/@cksgml1914",
   },

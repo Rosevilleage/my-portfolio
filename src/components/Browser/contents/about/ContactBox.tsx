@@ -10,7 +10,6 @@ import {
 interface ConTactProps {
   contact: {
     email: string;
-    phone: string;
     github: string;
     blog: string;
   };
@@ -18,17 +17,16 @@ interface ConTactProps {
 
 const icon = {
   email: <AiFillMail />,
-  phone: <AiFillPhone />,
   github: <AiFillGithub />,
   blog: <AiFillRead />,
 };
 
-type ContactKey = "email" | "phone" | "github" | "blog";
+type ContactKey = "email" | "github" | "blog";
 
 export default function ContactBox({ contact }: ConTactProps) {
   const contactKeys = Object.keys(contact);
   return (
-    <div className="grid gap-5 grid-cols-[repeat(auto-fit,minmax(260px,1fr))] max-w-[810px] w-full mt-5 mx-auto">
+    <div className="grid gap-5 grid-cols-[repeat(auto-fit,minmax(260px,1fr))] w-full mt-5 mx-auto">
       {contactKeys.map((key) => (
         <div
           key={key}

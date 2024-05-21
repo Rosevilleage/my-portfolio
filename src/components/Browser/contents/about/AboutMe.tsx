@@ -8,7 +8,6 @@ interface AboutContentProps {
     background: string[];
     contact: {
       email: string;
-      phone: string;
       github: string;
       blog: string;
     };
