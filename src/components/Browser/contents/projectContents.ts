@@ -47,8 +47,7 @@ export const ProjectContents = {
       "칵테일을 좋아하는 사람들이 서로 레시피를 공유한다는 컨셉의 프로젝트입니다. 처음으로 아이디어를 모아 진행한 프로젝트로 프론트엔드 팀과 백엔드 팀으로 구성되어 있습니다.",
     url: {
       github: "https://github.com/codestates-seb/seb43_main_011",
-      deploy:
-        "http://resevilleage-bukit.s3-website.ap-northeast-2.amazonaws.com/",
+      deploy: "http://alttalttal.com/",
       blog: "https://velog.io/@cksgml1914/이미지만-따로",
     },
     stack: [
