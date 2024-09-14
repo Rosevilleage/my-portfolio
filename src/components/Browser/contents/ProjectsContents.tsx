@@ -1,18 +1,25 @@
 "use client";
 import Link from "next/link";
-import CarouserlSlide from "./carousel/CarouselSlide";
-import { FcBusinessman, FcBrokenLink, FcRating } from "react-icons/fc";
-import { ForwardedRef, forwardRef, useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import {
+  FcBusinessman,
+  FcBrokenLink,
+  FcRating,
+  FcFlowChart,
+} from "react-icons/fc";
+import { useEffect, useRef, useState } from "react";
 import CustomImage from "./CustomImage";
-
+import CocktailDoc from "./../../../contentsDoc/cocktailDoc.md";
+import MealmoryDoc from "./../../../contentsDoc/mealmoryDoc.md";
+import { AppTitle } from "@/components/desktop/config";
 interface ProjectProps {
   data: {
     isTeam: boolean;
     name: string;
     images: string[];
-    introduction: string;
+    introduction: { text: string; fns: string[] };
+    experience: boolean;
     url?: {
+      [key: string]: string;
       github: string;
       deploy: string;
       blog: string;
@@ -20,9 +27,10 @@ interface ProjectProps {
     stack: string[];
     mypart: string[];
   };
+  title: AppTitle;
 }
 
-export default function ProjectsContents({ data }: ProjectProps) {
+export default function ProjectsContents({ data, title }: ProjectProps) {
   const projecType = data.isTeam ? "팀 프로젝트" : "개인 프로젝트";
   const part = data.isTeam ? "담당 기능" : "주요 기능";
 
@@ -71,9 +79,42 @@ export default function ProjectsContents({ data }: ProjectProps) {
           <FcBusinessman />
           <h2 className="ml-2">Introduction</h2>
         </div>
-        <p className="ml-1 text-lg">{data.introduction}</p>
+        <p className="ml-1 text-lg">{data.introduction.text}</p>
+        <ul className="pl-6 mt-2 list-disc">
+          {data.introduction.fns.map((fn) => (
+            <li key={fn}>{fn}</li>
+          ))}
+        </ul>
       </div>
     );
+  };
+
+  const Experience = () => {
+    return data.experience ? (
+      <div className="w-full list-disc">
+        <div className="flex items-center mb-2 text-2xl font-medium">
+          <FcFlowChart />
+          <h2 className="ml-2">주요 개발 경험</h2>
+        </div>
+        {title === "cocktail" && (
+          <CocktailDoc
+            components={{
+              ul: ({ children }) => (
+                <ul className="pl-4 list-disc">{children}</ul>
+              ),
+              p: ({ children }) => <p className="mb-2 leading-7">{children}</p>,
+            }}
+          />
+        )}
+        {title === "mealmory" && (
+          <MealmoryDoc
+            components={{
+              p: ({ children }) => <p className="mb-2 leading-7">{children}</p>,
+            }}
+          />
+        )}
+      </div>
+    ) : null;
   };
 
   const URLList = () => {
@@ -144,6 +185,7 @@ export default function ProjectsContents({ data }: ProjectProps) {
           <Instruction />
           {data.url && <URLList />}
           <MyPartList />
+          <Experience />
           <div className="relative flex flex-col w-full gap-40 mt-20">
             <div className="absolute w-1 -translate-x-1/2 bg-white top-[5px] h-[99%] left-1/2 shadow-line"></div>
             {data.images.map((image, i) => (
