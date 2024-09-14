@@ -10,9 +10,16 @@ export const ProjectContents = {
       baseUrl + "fitrace3.png",
       baseUrl + "fitrace4.png",
     ],
-    introduction:
-      "저의 첫 외주 작업 프로젝트로 운동 관리 애플리케이션의 관리자 페이지를 담당했습니다.",
-
+    introduction: {
+      text: "저의 첫 외주 작업 프로젝트로 운동 관리 애플리케이션의 관리자 페이지를 담당했습니다.",
+      fns: [
+        "회원의 정보를 열람할 수 있습니다.",
+        "특정일자 혹은 기간동안의 서비스 이용량을 확인할 수 있습니다.",
+        "회원목록을 엑셀파일로 다운로드 할 수 있습니다.",
+        "회원들에게 푸시메시지를 전송할 수 있습니다.",
+      ],
+    },
+    experience: false,
     stack: [
       "create-react-app",
       "react-router",
@@ -43,11 +50,19 @@ export const ProjectContents = {
       baseUrl + "cocktails4.png",
       baseUrl + "cocktails5.png",
     ],
-    introduction:
-      "칵테일을 좋아하는 사람들이 서로 레시피를 공유한다는 컨셉의 프로젝트입니다. 처음으로 아이디어를 모아 진행한 프로젝트로 프론트엔드 팀과 백엔드 팀으로 구성되어 있습니다.",
+    introduction: {
+      text: "칵테일 레시피를 공유하고 게시할 수 있는 서비스로, 일반적으로 알려진 정규 칵테일 레시피와 이용자들이 공유한 특별한 레시피를 접할 수 있는 커뮤니티 서비스입니다. 처음으로 아이디어를 모아 진행한 프로젝트로 프론트엔드 팀과 백엔드 팀으로 구성되어 있습니다.",
+      fns: [
+        "칵테일 레시피에 대한 정보와 이미지를 게시할 수 있습니다.",
+        "회원만의 닉네임과 프로필 이미지를 수정할 수 있습니다.",
+        "마음에 드는 레시피를 즐겨찾기하여, 북마크 목록에서 조회할 수 있습니다.",
+        "검색을 통해 특정 칵테일의 레시피를 검색할 수 있습니다.",
+      ],
+    },
+    experience: true,
     url: {
       github: "https://github.com/codestates-seb/seb43_main_011",
-      deploy: "http://alttalttal.com/",
+      deploy: "",
       blog: "https://velog.io/@cksgml1914/이미지만-따로",
     },
     stack: [
@@ -72,36 +87,54 @@ export const ProjectContents = {
       "반응형 디자인",
     ],
   },
-  todo: {
-    isTeam: false,
-    name: "todo-list",
+  mealmory: {
+    isTeam: true,
+    name: "밀모리: 식사의 추억",
     images: [
-      baseUrl + "todo1.png",
-      baseUrl + "todo2.png",
-      baseUrl + "todo3.png",
-      baseUrl + "todo4.png",
-      baseUrl + "todo5.png",
+      baseUrl + "mealmory1.png",
+      baseUrl + "mealmory2.png",
+      baseUrl + "mealmory3.png",
+      baseUrl + "mealmory4.png",
     ],
-    introduction:
-      "공부를 위해 처음부터 만들어본 첫번째 프로젝트로 일정을 관리하고, 달력을 통해 확인 할 수 있습니다. 간단한 api 서버를 express를 통해 만들었고, 추후에 데이터 베이스까지 연결해 배포하는 것을 이 서비스의 최종 목표로 두고 있습니다.",
+    introduction: {
+      text: "식단을 저장하고, 관리할 수 있는 서비스입니다. 섭취한 식단을 저장하고 활동 칼로리를 기반으로 적정량의 칼로리를 섭취했는지 여부와 bmi를 기준으로 비만도를 측정할 수 있습니다.",
+      fns: [
+        "섭취한 식단을 등록, 수정, 삭제할 수 있습니다.",
+        "음식을 검색해 탄수화물, 단백질, 지방의 함유량을 확인할 수 있습니다.",
+        "직접 음식과 칼로리 정보를 입력해 식단을 저장할 수도 있습니다.",
+        "달력을 통해 통계 데이터 혹은 식단 저장 일자를 선택할 수 있습니다.",
+        "통계 데이터와 캐릭터를 통해서 적정량의 칼로리를 섭취했는지 확인할 수 있습니다.",
+        "다크모드와 라이트 모드 등 화면의 테마를 선택할 수 있습니다.",
+        "사용자의 정보(키, 몸무게 등)을 수정할 수 있습니다.",
+      ],
+    },
+    experience: true,
     url: {
-      github: "https://github.com/Rosevilleage/todo-list",
-      deploy: "",
-      blog: "",
+      github: "https://github.com/mealmory/mealmory_fe",
+      deploy: "http://www.mealmory.life",
+      notion:
+        "https://tunajo.notion.site/mealmory-7a6daef1fc35475a87d7890931354bbb?pvs=74",
     },
     stack: [
-      "javascript",
-      "create-react-app",
-      "redux-toolkit",
-      "data-fns",
-      "react-router",
-      "styled-components",
-      "axios",
+      "next js",
+      "tailwindcss",
+      "return-fetch",
+      "react-chartjs-2",
+      "react-icons",
+      "js-cookie",
+      "sweetalert2",
+      "zustand",
+      "uuid",
     ],
     mypart: [
-      "일정 등록 및 삭제",
-      "달력 및 모달창 기능",
-      "북마크 기능을 통한 완료/반복 일정 관리",
+      "날짜 선택 달력 구현",
+      "jwt api httpOnly secure cookie 핸들링",
+      "유저 정보 web crypto api AES-GCM 암호화",
+      "다크모드",
+      "식단 검색",
+      "식단 추가, 수정, 삭제",
+      "통계 데이터 차트 표현",
+      "반응형 디자인",
     ],
   },
   portfolio: {
@@ -113,8 +146,16 @@ export const ProjectContents = {
       baseUrl + "portfolio3.png",
       baseUrl + "portfolio4.png",
     ],
-    introduction:
-      "제가 만든 프로젝트들에 대한 포트폴리오입니다. 기존의 create-react-app 방식을 벗어나 이전부터 관심을 가지던 next js와 tailwind를 경험해보기 위해서 next, tailwind를 사용해 제작하였습니다.",
+    introduction: {
+      text: "제가 만든 프로젝트들에 대한 포트폴리오입니다. 기존의 create-react-app 방식을 벗어나 이전부터 관심을 가지던 next js와 tailwind를 경험해보기 위해서 next, tailwind를 사용해 제작하였습니다.",
+      fns: [
+        "칵테일 레시피에 대한 정보와 이미지를 게시할 수 있습니다.",
+        "회원만의 닉네임과 프로필 이미지를 수정할 수 있습니다.",
+        "마음에 드는 레시피를 즐겨찾기하여, 북마크 목록에서 조회할 수 있습니다.",
+        "검색을 통해 특정 칵테일의 레시피를 검색할 수 있습니다.",
+      ],
+    },
+    experience: false,
     url: {
       github: "https://github.com/Rosevilleage/my-portfolio",
       deploy: "",
