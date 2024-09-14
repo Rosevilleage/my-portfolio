@@ -19,10 +19,10 @@ interface ProjectProps {
     introduction: { text: string; fns: string[] };
     experience: boolean;
     url?: {
-      [key: string]: string;
       github: string;
       deploy: string;
       blog: string;
+      notion?: string;
     };
     stack: string[];
     mypart: string[];
