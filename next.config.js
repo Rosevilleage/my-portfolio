@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -9,5 +10,8 @@ const nextConfig = {
     return config;
   },
 };
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx?$/,
+});
 
-module.exports = nextConfig;
+module.exports = withMDX(nextConfig);
