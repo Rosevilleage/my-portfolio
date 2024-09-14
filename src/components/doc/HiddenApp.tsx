@@ -5,7 +5,7 @@ import { AppTitle } from "../desktop/config";
 const HIDENAPPIMAGE = {
   about: "/images/aboutHidden.png",
   cocktail: "/images/cocktailHidden.png",
-  todo: "/images/todoHidden.png",
+  mealmory: "/images/mealmoryHidden.png",
   portfolio: "/images/portfolioHidden.png",
   fitrace: "/images/fitraceHidden.png",
 };

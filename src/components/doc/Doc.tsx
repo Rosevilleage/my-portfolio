@@ -38,8 +38,8 @@ export default function Doc({
   }, [boundaryCur]);
 
   const anyTruthy = (state: AppState) => {
-    const { about, cocktail, todo, portfolio, fitrace } = state;
-    return about || cocktail || todo || portfolio || fitrace;
+    const { about, cocktail, mealmory, portfolio, fitrace } = state;
+    return about || cocktail || mealmory || portfolio || fitrace;
   };
 
   const desktopIsClean = () => {
