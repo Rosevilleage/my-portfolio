@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const openAppSlice = createSlice({
   name: "openApp",
-  initialState: CONTENTS,
+  initialState: { ...CONTENTS, about: true },
   reducers: {
     closeApp: (state: AppState, action: PayloadAction<AppTitle>) => {
       state[action.payload] = false;
