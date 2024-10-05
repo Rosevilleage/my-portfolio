@@ -83,7 +83,7 @@ export default function Doc({
       onMouseEnter={() => desktopIsClean() && setDocTop(false)}
     >
       <div className="flex items-start justify-around pt-2 pr-2 bg-gray-600 rounded-xl bg-opacity-32 backdrop-blur-md h-[54px] max-sm:h-max max-sm:pb-2 max-sm:pr-0">
-        <div className="flex items-start justify-around w-[220px] max-sm:w-full">
+        <div className="flex items-start justify-around gap-1 min-w-[220px] px-1 max-sm:w-full">
           {APPList.map((app) => (
             <App
               key={app}

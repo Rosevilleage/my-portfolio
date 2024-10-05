@@ -3,6 +3,7 @@ import { AppTitle } from "../desktop/config";
 
 const APPIMAGES = {
   about: "/images/about.svg",
+  scraping: "/images/scraping.svg",
   cocktail: "/images/cocktail.svg",
   mealmory: "/images/mealmory.svg",
   portfolio: "/images/portfolio.svg",

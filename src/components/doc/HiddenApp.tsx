@@ -4,6 +4,7 @@ import { AppTitle } from "../desktop/config";
 
 const HIDENAPPIMAGE = {
   about: "/images/aboutHidden.png",
+  scraping: "/images/scrapingHidden.png",
   cocktail: "/images/cocktailHidden.png",
   mealmory: "/images/mealmoryHidden.png",
   portfolio: "/images/portfolioHidden.png",
