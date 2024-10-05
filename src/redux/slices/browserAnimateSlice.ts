@@ -9,7 +9,7 @@ const browserAnimateSlice = createSlice({
       state[action.payload] = true;
     },
     browserAnimateOff: (state: AppState, action: PayloadAction<AppTitle>) => {
-      state[action.payload] = true;
+      state[action.payload] = false;
     },
   },
 });
