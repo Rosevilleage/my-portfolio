@@ -149,7 +149,6 @@ export const ProjectContents = {
     experience: true,
     url: {
       github: "https://github.com/mealmory/mealmory_fe",
-      deploy: "http://www.mealmory.life",
       blog: "",
       notion:
         "https://tunajo.notion.site/mealmory-7a6daef1fc35475a87d7890931354bbb?pvs=74",
