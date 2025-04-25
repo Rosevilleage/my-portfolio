@@ -7,10 +7,12 @@ const CustomImage = forwardRef(
       image,
       idx,
       isView,
+      isMobile,
     }: {
       image: string;
       idx: number;
       isView: boolean;
+      isMobile?: boolean;
     },
     ref: ForwardedRef<HTMLDivElement>
   ) => {
@@ -19,7 +21,7 @@ const CustomImage = forwardRef(
         key={image}
         ref={ref}
         className={
-          "w-full max-w-[1000px]" +
+          `${isMobile ? "w-full max-w-[280px]" : "w-full max-w-[1000px]"}` +
           ` ${idx % 2 !== 0 ? " self-end" : ""}` +
           ` ${isView ? "" : " -left-full"}`
         }
@@ -28,7 +30,9 @@ const CustomImage = forwardRef(
         }}
       >
         <div
-          className="w-full pt-[54.722%] relative"
+          className={`w-full ${
+            isMobile ? "pt-[210.78%]" : "pt-[56.25%]"
+          } relative`}
           style={{
             transformStyle: "preserve-3d",
             transition: "transform 0.2s ease-out 0.2s",
@@ -43,8 +47,22 @@ const CustomImage = forwardRef(
             }
             style={{
               transform: "rotateX(-90deg) translateZ(-4px)",
-              left: idx % 2 !== 0 ? (isView ? "1.5%" : "-110vw") : "",
-              right: idx % 2 === 0 ? (isView ? "1.5%" : "-110vw") : "",
+              left:
+                idx % 2 !== 0
+                  ? isView
+                    ? isMobile
+                      ? "-50%"
+                      : "1.5%"
+                    : "-110vw"
+                  : "",
+              right:
+                idx % 2 === 0
+                  ? isView
+                    ? isMobile
+                      ? "-50%"
+                      : "1.5%"
+                    : "-110vw"
+                  : "",
               transition:
                 "left 0.2s ease-out, right 0.2s ease-out, opacity 1s ease-out 0.3s, box-shadow 1s ease-out 0.3s",
             }}
@@ -55,11 +73,29 @@ const CustomImage = forwardRef(
             draggable={false}
             priority
             fill={true}
-            sizes="(max-width: 375px) 100vw, (max-width: 1200px) 812.5px, 1300px"
-            className=" rounded-xl shadow-line"
+            sizes={
+              isMobile
+                ? "(max-width: 375px) 100vw, (max-width: 1200px) 280px"
+                : "(max-width: 375px) 100vw, (max-width: 1200px) 812.5px, 1300px"
+            }
+            className="rounded-xl shadow-line"
             style={{
-              left: idx % 2 !== 0 ? (isView ? "0" : "-110vw") : "",
-              right: idx % 2 === 0 ? (isView ? "0" : "-110vw") : "",
+              left:
+                idx % 2 !== 0
+                  ? isView
+                    ? isMobile
+                      ? "-10vw"
+                      : "0"
+                    : "-110vw"
+                  : "",
+              right:
+                idx % 2 === 0
+                  ? isView
+                    ? isMobile
+                      ? "-10vw"
+                      : "0"
+                    : "-110vw"
+                  : "",
               transition: "left 0.2s ease-out, right 0.2s ease-out",
             }}
           />
