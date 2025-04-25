@@ -8,6 +8,7 @@ const APPIMAGES = {
   mealmory: "/images/mealmory.svg",
   portfolio: "/images/portfolio.svg",
   fitrace: "/images/fitrace.svg",
+  cuther: "/images/cuther.svg",
 };
 
 interface AppProps {
@@ -35,7 +36,7 @@ export default function App({ title, isOpen, appClickHandler }: AppProps) {
         />
       </div>
       {isOpen && (
-        <div className="w-1 h-1 mx-auto mt-1 rounded-full bg-slate-300 max-sm:hidden" />
+        <div className="mx-auto mt-1 w-1 h-1 rounded-full bg-slate-300 max-sm:hidden" />
       )}
     </div>
   );

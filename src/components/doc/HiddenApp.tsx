@@ -9,6 +9,7 @@ const HIDENAPPIMAGE = {
   mealmory: "/images/mealmoryHidden.png",
   portfolio: "/images/portfolioHidden.png",
   fitrace: "/images/fitraceHidden.png",
+  cuther: "/images/cutherHidden.png",
 };
 
 interface HiddenProps {

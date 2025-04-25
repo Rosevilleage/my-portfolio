@@ -5,14 +5,16 @@ const CONTENTS = {
   cocktail: false,
   mealmory: false,
   portfolio: false,
+  cuther: false,
 };
 
-const CONTENTS_LENG = 4;
+const CONTENTS_LENG = 6;
 
 const APPList = [
   "about",
   "scraping",
   "fitrace",
+  "cuther",
   "cocktail",
   "mealmory",
   "portfolio",
