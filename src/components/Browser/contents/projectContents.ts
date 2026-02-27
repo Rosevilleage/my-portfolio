@@ -2,7 +2,12 @@ import type { AppTitle } from "@/components/desktop/config";
 
 const baseUrl = "/images/contentsImages/";
 
-export type ExperienceDocId = "cocktail" | "mealmory" | "cuther" | "rlt";
+export type ExperienceDocId =
+  | "cocktail"
+  | "mealmory"
+  | "cuther"
+  | "find-mat"
+  | "rlt";
 
 export const PROJECTS_BY_CATEGORY: {
   freelance: AppTitle[];
@@ -291,7 +296,7 @@ export const ProjectContents = {
   },
   "find-mat": {
     isTeam: false,
-    name: "맛찾기",
+    name: "Find Mat: 맛찾기",
     images: [
       baseUrl + "find-mat1.png",
       baseUrl + "find-mat2.png",
@@ -299,27 +304,38 @@ export const ProjectContents = {
       baseUrl + "find-mat4.png",
     ],
     introduction: {
-      text: "임시 설명입니다.",
+      text: "오늘 뭐 먹지? 고민을 해결하기 위한 음식 추천 모바일 웹 애플리케이션입니다. 음식을 랜덤으로 추천받고, 주변 음식점을 Kakao Map에서 검색할 수 있습니다.",
       fns: [
-        "임시 기능 1",
-        "임시 기능 2",
-        "임시 기능 3",
+        "슬롯머신 UI로 음식을 랜덤 추천받을 수 있습니다.",
+        "기본 목록(97종)과 사용자 커스텀 목록을 토글하여 사용할 수 있습니다.",
+        "추천받은 음식으로 내 주변 음식점을 Kakao Map Places API로 검색할 수 있습니다.",
+        "Geolocation 기반 현재 위치로 지도 중심을 설정합니다.",
       ],
     },
     experience: true,
+    experienceDocId: "find-mat" as const,
     url: {
-      github: "",
-      deploy: "",
+      github: "https://github.com/Rosevilleage/find-mat",
+      deploy: "https://find-mat.vercel.app",
       blog: "",
     },
     stack: [
-      "typescript",
-      "react",
-      "tailwind",
+      "React 19",
+      "TypeScript",
+      "Vite 7",
+      "Tailwind CSS 4",
+      "TanStack Query",
+      "React Router 7",
+      "Framer Motion",
+      "Kakao Map SDK",
+      "Vitest",
     ],
     mypart: [
-      "임시 담당 역할 1",
-      "임시 담당 역할 2",
+      "Kakao Map SDK 동적 로더 및 map/marker/places-service 순수 함수 래핑",
+      "useMapMarkers 훅으로 마커·오버레이 생성/갱신 및 메모리 누수 방지",
+      "슬롯머신 위젯 3열 애니메이션 및 커스텀 목록 모드",
+      "useFoodList로 localStorage 기반 음식 목록 관리, 한글 미완성 문자 검증",
+      "useGeolocation 훅 및 에러별 UX 분기, Permissions API 권한 변경 감지",
     ],
     isMobile: true,
   },

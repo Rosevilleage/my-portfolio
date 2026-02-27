@@ -11,6 +11,7 @@ import CustomImage from "./CustomImage";
 import CocktailDoc from "./../../../contentsDoc/cocktailDoc.md";
 import MealmoryDoc from "./../../../contentsDoc/mealmoryDoc.md";
 import CutherDoc from "./../../../contentsDoc/cutherDoc.md";
+import FindMatDoc from "./../../../contentsDoc/findMatDoc.md";
 import RltDoc from "./../../../contentsDoc/rltDoc.md";
 import type { ExperienceDocId } from "./projectContents";
 
@@ -192,6 +193,7 @@ const EXPERIENCE_DOC_MAP: Record<
   cocktail: CocktailDoc,
   mealmory: MealmoryDoc,
   cuther: CutherDoc,
+  "find-mat": FindMatDoc,
   rlt: RltDoc,
 };
 
