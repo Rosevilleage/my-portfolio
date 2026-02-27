@@ -1,5 +1,7 @@
 const baseUrl = "/images/contentsImages/";
 
+export type ExperienceDocId = "cocktail" | "mealmory" | "cuther" | "rlt";
+
 export const ProjectContents = {
   cuther: {
     isTeam: false,
@@ -21,6 +23,7 @@ export const ProjectContents = {
       ],
     },
     experience: true,
+    experienceDocId: "cuther" as const,
     url: {
       github: "https://github.com/Rosevilleage/cuther",
       deploy: "",
@@ -141,6 +144,7 @@ export const ProjectContents = {
       ],
     },
     experience: true,
+    experienceDocId: "cocktail" as const,
     url: {
       github: "https://github.com/codestates-seb/seb43_main_011",
       deploy: "",
@@ -190,6 +194,7 @@ export const ProjectContents = {
       ],
     },
     experience: true,
+    experienceDocId: "mealmory" as const,
     url: {
       github: "https://github.com/mealmory/mealmory_fe",
       deploy: "",
@@ -220,7 +225,7 @@ export const ProjectContents = {
     ],
   },
   rlt: {
-    isTeam: false,
+    isTeam: true,
     name: "뽑기?뽑기!",
     images: [
       baseUrl + "rlt1.png",
@@ -231,27 +236,44 @@ export const ProjectContents = {
       baseUrl + "rlt6.png",
     ],
     introduction: {
-      text: "임시 설명입니다.",
+      text: "친구나 팀원과 함께 실시간으로 랜덤 뽑기를 할 수 있는 웹 애플리케이션입니다. Socket.IO 기반의 실시간 동기화로 여러 사용자가 동시에 결과를 확인할 수 있으며, 방장이 방을 생성하고 참가자가 QR 코드 스캔 또는 링크로 입장한 뒤 모두 준비 완료 시 뽑기를 실행합니다.",
       fns: [
-        "임시 기능 1",
-        "임시 기능 2",
-        "임시 기능 3",
+        "방장이 방을 생성하고 제목·당첨자 수·감정(당첨/미당첨) 등을 설정할 수 있습니다.",
+        "참가자가 QR 코드 스캔 또는 링크로 입장할 수 있습니다.",
+        "참가자가 모두 준비 완료 후 방장이 뽑기를 실행합니다.",
+        "카드 애니메이션을 통해 결과가 모든 사용자에게 동시에 전달됩니다.",
+        "혼자 뽑기 모드(SessionStorage 기반)를 지원합니다.",
       ],
     },
     experience: true,
+    experienceDocId: "rlt" as const,
     url: {
       github: "",
-      deploy: "",
+      deploy: "https://roulette-together.com",
       blog: "",
     },
     stack: [
-      "typescript",
-      "react",
-      "tailwind",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Zustand",
+      "Socket.IO Client",
+      "Motion",
+      "GSAP",
+      "TanStack Query",
+      "shadcn/ui",
+      "qrcode.react",
     ],
     mypart: [
-      "임시 담당 역할 1",
-      "임시 담당 역할 2",
+      "FSD(Feature-Sliced Design) 아키텍처로 레이어 간 단방향 의존성 유지",
+      "Socket.IO 싱글턴 + Hydration-safe 초기화로 Next.js App Router 환경 대응",
+      "역할 기반 뷰(방장/참가자)와 단일 URL 설계",
+      "WebSocket 이벤트 페이로드 TypeScript 타입 정의로 타입 안전성 확보",
+      "서버 주도 애니메이션 타이밍(revealAt, durationMs) 동기화",
+      "Motion의 DOM 직접 애니메이션으로 카드 수 증가 시 React 리렌더 최소화",
+      "디바이스 성능 레벨 감지 후 PixelCard 적응형 렌더링",
+      "LocalStorage 기반 방 관리 및 7일 만료 데이터 정리",
+      "API 에러를 사용자 친화적 한글 메시지로 변환하는 체계 구축",
     ],
     isMobile: true,
   },

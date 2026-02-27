@@ -11,29 +11,32 @@ import CustomImage from "./CustomImage";
 import CocktailDoc from "./../../../contentsDoc/cocktailDoc.md";
 import MealmoryDoc from "./../../../contentsDoc/mealmoryDoc.md";
 import CutherDoc from "./../../../contentsDoc/cutherDoc.md";
-import { AppTitle } from "@/components/desktop/config";
+import RltDoc from "./../../../contentsDoc/rltDoc.md";
+import type { ExperienceDocId } from "./projectContents";
 
-interface ProjectProps {
-  data: {
-    isTeam: boolean;
-    name: string;
-    images: string[];
-    introduction: { text: string; fns: string[] };
-    experience: boolean;
-    url?: {
-      github: string;
-      deploy: string;
-      blog: string;
-      notion?: string;
-    };
-    stack: string[];
-    mypart: string[];
-    isMobile?: boolean;
+interface ProjectData {
+  isTeam: boolean;
+  name: string;
+  images: string[];
+  introduction: { text: string; fns: string[] };
+  experience: boolean;
+  experienceDocId?: ExperienceDocId;
+  url?: {
+    github: string;
+    deploy: string;
+    blog: string;
+    notion?: string;
   };
-  title: AppTitle;
+  stack: string[];
+  mypart: string[];
+  isMobile?: boolean;
 }
 
-export default function ProjectsContents({ data, title }: ProjectProps) {
+interface ProjectProps {
+  data: ProjectData;
+}
+
+export default function ProjectsContents({ data }: ProjectProps) {
   const projecType = data.isTeam ? "팀 프로젝트" : "개인 프로젝트";
   const part = data.isTeam ? "담당 기능" : "주요 기능";
   const isMobile = data.isMobile;
@@ -87,7 +90,7 @@ export default function ProjectsContents({ data, title }: ProjectProps) {
           <Introduction data={data} />
           {data.url && <URLList data={data} />}
           <MyPartList data={data} part={part} />
-          <Experience data={data} title={title} />
+          <Experience data={data} />
           <div className="flex relative flex-col gap-40 mt-20 w-full">
             <div className="absolute w-1 -translate-x-1/2 bg-white top-[5px] h-[99%] left-1/2 shadow-line"></div>
             {data.images.map((image, i) => (
@@ -107,7 +110,7 @@ export default function ProjectsContents({ data, title }: ProjectProps) {
   );
 }
 
-const Introduction = ({ data }: { data: ProjectProps["data"] }) => {
+const Introduction = ({ data }: { data: ProjectData }) => {
   return (
     <div className="mb-8">
       <div className="flex items-center mb-2 text-2xl font-medium">
@@ -182,33 +185,36 @@ const markdownComponents = {
   ),
 } as any;
 
-const Experience = ({
-  data,
-  title,
-}: {
-  data: ProjectProps["data"];
-  title: AppTitle;
-}) => {
-  return data.experience ? (
+const EXPERIENCE_DOC_MAP: Record<
+  ExperienceDocId,
+  React.ComponentType<{ components: typeof markdownComponents }>
+> = {
+  cocktail: CocktailDoc,
+  mealmory: MealmoryDoc,
+  cuther: CutherDoc,
+  rlt: RltDoc,
+};
+
+const Experience = ({ data }: { data: ProjectData }) => {
+  if (!data.experience || !data.experienceDocId) return null;
+
+  const DocComponent = EXPERIENCE_DOC_MAP[data.experienceDocId];
+  if (!DocComponent) return null;
+
+  return (
     <div className="w-full list-disc">
       <div className="flex items-center mb-2 text-2xl font-medium">
         <FcFlowChart />
         <h2 className="ml-2">주요 개발 경험</h2>
       </div>
       <div className="max-w-[894px] mx-auto list-disc">
-        {title === "cocktail" && (
-          <CocktailDoc components={markdownComponents} />
-        )}
-        {title === "mealmory" && (
-          <MealmoryDoc components={markdownComponents} />
-        )}
-        {title === "cuther" && <CutherDoc components={markdownComponents} />}
+        <DocComponent components={markdownComponents} />
       </div>
     </div>
-  ) : null;
+  );
 };
 
-const URLList = ({ data }: { data: ProjectProps["data"] }) => {
+const URLList = ({ data }: { data: ProjectData }) => {
   return (
     <div className="flex mb-8">
       <div className="flex items-center mr-2 text-2xl font-medium">
@@ -234,7 +240,7 @@ const URLList = ({ data }: { data: ProjectProps["data"] }) => {
   );
 };
 
-const StackList = ({ data }: { data: ProjectProps["data"] }) => {
+const StackList = ({ data }: { data: ProjectData }) => {
   return (
     <ul className="flex flex-wrap gap-2 mb-8 list-none list-inside">
       {data.stack.map((item) => (
@@ -253,7 +259,7 @@ const MyPartList = ({
   data,
   part,
 }: {
-  data: ProjectProps["data"];
+  data: ProjectData;
   part: string;
 }) => {
   return (
