@@ -5,6 +5,8 @@ import {
   browserAnimateOff,
 } from "@/redux/slices/browserAnimateSlice";
 
+const BROWSER_ANIMATION_MS = 300;
+
 export default function useBrowserAnimateTrigger(
   title: AppTitle,
   utilFunc: () => void
@@ -16,7 +18,7 @@ export default function useBrowserAnimateTrigger(
       utilFunc();
       setTimeout(() => {
         dispatch(browserAnimateOff(title));
-      }, 100);
+      }, BROWSER_ANIMATION_MS);
     },
   };
 }

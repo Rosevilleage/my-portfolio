@@ -1,6 +1,18 @@
+import type { AppTitle } from "@/components/desktop/config";
+
 const baseUrl = "/images/contentsImages/";
 
 export type ExperienceDocId = "cocktail" | "mealmory" | "cuther" | "rlt";
+
+export const PROJECTS_BY_CATEGORY: {
+  freelance: AppTitle[];
+  team: AppTitle[];
+  solo: AppTitle[];
+} = {
+  freelance: ["fitrace", "scraping"],
+  team: ["cocktail", "mealmory"],
+  solo: ["cuther", "find-mat", "portfolio", "rlt"],
+};
 
 export const ProjectContents = {
   cuther: {
@@ -248,7 +260,7 @@ export const ProjectContents = {
     experience: true,
     experienceDocId: "rlt" as const,
     url: {
-      github: "",
+      github: "https://github.com/Rosevilleage/roulette-together-fe",
       deploy: "https://roulette-together.com",
       blog: "",
     },

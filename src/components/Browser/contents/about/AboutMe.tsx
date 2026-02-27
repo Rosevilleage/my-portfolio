@@ -1,4 +1,3 @@
-import ContactBox from "./ContactBox";
 import Education from "./Education";
 import SkillsBox from "./SkillsBox";
 interface AboutContentProps {
@@ -26,8 +25,14 @@ export default function AboutMe({ data }: AboutContentProps) {
         <div className="mx-auto ">
           <h1 className="text-5xl font-semibold ">{data.name}</h1>
         </div>
-        <div className="p-6 text-lg">
+        <div className="p-6 text-lg text-center">
           <p>{data.introduction}</p>
+          <a
+            href={`mailto:${data.contact.email}`}
+            className="inline-flex items-center gap-2 mt-4 text-cyan-200 hover:text-cyan-100 transition-colors"
+          >
+            {data.contact.email}
+          </a>
         </div>
       </div>
       <div className="w-full h-full ">
@@ -39,7 +44,6 @@ export default function AboutMe({ data }: AboutContentProps) {
               </li>
             ))}
           </ul>
-          <ContactBox contact={data.contact} />
           <SkillsBox skills={data.skill} />
           <Education education={data.education} />
         </div>

@@ -30,4 +30,9 @@ type AppState = typeof CONTENTS;
 
 type AppTitle = keyof AppState;
 
+export type DocItem = "about" | "projects" | "github" | "blog";
+
+const DOC_ITEMS: DocItem[] = ["about", "projects", "github", "blog"];
+
+export { DOC_ITEMS };
 export type { AppState, AppTitle };
