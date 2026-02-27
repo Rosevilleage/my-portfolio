@@ -27,6 +27,7 @@ const CustomImage = forwardRef(
         }
         style={{
           perspective: "2000px",
+          containerType: "inline-size",
         }}
       >
         <div
@@ -42,7 +43,7 @@ const CustomImage = forwardRef(
         >
           <div
             className={
-              "absolute top-0 w-[97%] h-1 bg-white rounded-xl" +
+              "absolute top-0 w-full h-1 bg-white rounded-xl" +
               ` ${isView ? "opacity-0" : "opacity-1 shadow-line"}`
             }
             style={{
@@ -51,7 +52,7 @@ const CustomImage = forwardRef(
                 idx % 2 !== 0
                   ? isView
                     ? isMobile
-                      ? "-50%"
+                      ? "-10cqi"
                       : "1.5%"
                     : "-110vw"
                   : "",
@@ -59,7 +60,7 @@ const CustomImage = forwardRef(
                 idx % 2 === 0
                   ? isView
                     ? isMobile
-                      ? "-50%"
+                      ? "-10cqi"
                       : "1.5%"
                     : "-110vw"
                   : "",
@@ -84,7 +85,7 @@ const CustomImage = forwardRef(
                 idx % 2 !== 0
                   ? isView
                     ? isMobile
-                      ? "-10vw"
+                      ? "-10cqi"
                       : "0"
                     : "-110vw"
                   : "",
@@ -92,7 +93,7 @@ const CustomImage = forwardRef(
                 idx % 2 === 0
                   ? isView
                     ? isMobile
-                      ? "-10vw"
+                      ? "-10cqi"
                       : "0"
                     : "-110vw"
                   : "",
