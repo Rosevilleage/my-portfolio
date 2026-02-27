@@ -9,7 +9,18 @@ const APPIMAGES = {
   portfolio: "/images/portfolio.svg",
   fitrace: "/images/fitrace.svg",
   cuther: "/images/cuther.svg",
+  rlt: "/images/rlt.svg",
+  "find-mat": "/images/find-mat.svg",
 };
+
+const APP_TOOLTIP: Partial<Record<AppTitle, string>> = {
+  rlt: "roulette",
+  "find-mat": "mat",
+};
+
+function getTooltipText(title: AppTitle): string {
+  return APP_TOOLTIP[title] ?? title;
+}
 
 interface AppProps {
   title: AppTitle;
@@ -25,7 +36,7 @@ export default function App({ title, isOpen, appClickHandler }: AppProps) {
     >
       <div className=" group-hover:block hidden absolute px-[5px] py-[3px] -translate-x-1/2 left-1/2 -top-10 bg-black rounded-md max-sm:group-hover:hidden ">
         <span className="absolute w-2.5 h-2.5 -translate-x-1/2 -bottom-2 left-1/2 border-t-8 border-t-black border-r-8 border-l-8 border-r-transparent border-l-transparent "></span>
-        <p className="text-sm text-white tsxt-center">{title}</p>
+        <p className="text-sm text-white tsxt-center">{getTooltipText(title)}</p>
       </div>
       <div className="relative w-[35px] h-[35px] overflow-hidden max-sm:w-14 max-sm:h-14">
         <Image

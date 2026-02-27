@@ -18,8 +18,8 @@ interface BrowserProps {
   isOpen: boolean;
 }
 const anyTruthy = (state: AppState) => {
-  const { about, cocktail, mealmory, portfolio } = state;
-  return about || cocktail || mealmory || portfolio;
+  const { about, cocktail, mealmory, portfolio, cuther, rlt, "find-mat": findMat } = state;
+  return about || cocktail || mealmory || portfolio || cuther || rlt || findMat;
 };
 
 export default function Browser({

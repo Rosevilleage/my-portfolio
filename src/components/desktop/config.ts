@@ -6,9 +6,11 @@ const CONTENTS = {
   mealmory: false,
   portfolio: false,
   cuther: false,
+  rlt: false,
+  "find-mat": false,
 };
 
-const CONTENTS_LENG = 6;
+const CONTENTS_LENG = 8;
 
 const APPList = [
   "about",
@@ -18,6 +20,8 @@ const APPList = [
   "cocktail",
   "mealmory",
   "portfolio",
+  "rlt",
+  "find-mat",
 ] as const;
 
 export { CONTENTS, CONTENTS_LENG, APPList };

@@ -219,6 +219,76 @@ export const ProjectContents = {
       "반응형 디자인",
     ],
   },
+  rlt: {
+    isTeam: false,
+    name: "뽑기?뽑기!",
+    images: [
+      baseUrl + "rlt1.png",
+      baseUrl + "rlt2.png",
+      baseUrl + "rlt3.png",
+      baseUrl + "rlt4.png",
+      baseUrl + "rlt5.png",
+      baseUrl + "rlt6.png",
+    ],
+    introduction: {
+      text: "임시 설명입니다.",
+      fns: [
+        "임시 기능 1",
+        "임시 기능 2",
+        "임시 기능 3",
+      ],
+    },
+    experience: true,
+    url: {
+      github: "",
+      deploy: "",
+      blog: "",
+    },
+    stack: [
+      "typescript",
+      "react",
+      "tailwind",
+    ],
+    mypart: [
+      "임시 담당 역할 1",
+      "임시 담당 역할 2",
+    ],
+    isMobile: true,
+  },
+  "find-mat": {
+    isTeam: false,
+    name: "맛찾기",
+    images: [
+      baseUrl + "find-mat1.png",
+      baseUrl + "find-mat2.png",
+      baseUrl + "find-mat3.png",
+      baseUrl + "find-mat4.png",
+    ],
+    introduction: {
+      text: "임시 설명입니다.",
+      fns: [
+        "임시 기능 1",
+        "임시 기능 2",
+        "임시 기능 3",
+      ],
+    },
+    experience: true,
+    url: {
+      github: "",
+      deploy: "",
+      blog: "",
+    },
+    stack: [
+      "typescript",
+      "react",
+      "tailwind",
+    ],
+    mypart: [
+      "임시 담당 역할 1",
+      "임시 담당 역할 2",
+    ],
+    isMobile: true,
+  },
   portfolio: {
     isTeam: false,
     name: "장찬희 portfolio",
