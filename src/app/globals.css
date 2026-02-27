@@ -28,3 +28,33 @@
 .scroll-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Custom scrollbar for browser content area */
+.scroll-custom::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll-custom::-webkit-scrollbar-track {
+  background: rgb(241 245 249);
+  border-radius: 4px;
+}
+
+.scroll-custom::-webkit-scrollbar-thumb {
+  background: rgb(148 163 184);
+  border-radius: 4px;
+}
+
+.scroll-custom::-webkit-scrollbar-thumb:hover {
+  background: rgb(100 116 139);
+}
+
+.scroll-custom::-webkit-scrollbar-thumb:active {
+  background: rgb(71 85 105);
+}
+
+/* Firefox */
+.scroll-custom {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(148 163 184) rgb(241 245 249);
+  overscroll-behavior-y: none;
+}
