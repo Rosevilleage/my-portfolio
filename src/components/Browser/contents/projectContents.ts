@@ -381,12 +381,12 @@ export const ProjectContents = {
 };
 
 export const aboutContent = {
-  name: "About Me",
-  introduction: "코드로 가치를 만드는 장찬희입니다.",
+  name: "About me",
+  introduction: "사용자 경험을 중심으로 가치를 만드는 프론트엔드 개발자 장찬희입니다.",
   background: [
-    "서비스는 단순한 코드의 조합이 아니라, 사용자에게 가치를 전달하는 수단이라고 생각합니다.",
-    "두 번의 프리랜서 프로젝트를 통해 비즈니스 요구사항을 분석하고 UI로 구현하는 과정을 익혔으며, React 기반의 웹 개발과 API 연동, 상태 관리 등의 경험을 쌓았습니다.",
-    "개발자로서 코드를 통해 실질적인 가치를 제공하는 방법을 고민하며, 협업 과정에서는 원활한 커뮤니케이션을 통해 효율적인 개발을 지향하고있습니다.",
+    "서비스는 단순한 코드의 조합이 아니라 사용자에게 가치를 전달하는 수단이라 생각합니다. 구현 기능보다 사용자 관점의 문제 해결에 중점을 둡니다.",
+    "두 번의 프리랜서 프로젝트에서 비즈니스 요구사항 분석, UI 설계 및 구현 경험을 쌓았습니다. React 기반 웹 개발, REST API 연동, Redux를 활용한 상태 관리에 익숙합니다.",
+    "원활한 커뮤니케이션을 통해 효율적인 협업을 지향합니다. 코드 품질과 유지보수성을 고려하며, 지속적으로 학습하고 공유하는 개발자를 목표로 합니다.",
   ],
   contact: {
     email: "chanhee.frontend@gmail.com",
@@ -400,6 +400,7 @@ export const aboutContent = {
     "css",
     "react",
     "styled-components",
+    "redux-toolkit",
     "axios",
   ],
   education: [

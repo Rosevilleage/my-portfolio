@@ -9,7 +9,9 @@ interface ContentProps {
 
 export default function Contents({ title }: ContentProps) {
   return (
-    <div className="h-[calc(100%-32px)] w-full bg-white overflow-x-hidden overflow-y-auto scroll-custom">
+    <div
+      className={`h-[calc(100%-32px)] w-full overflow-x-hidden overflow-y-auto scroll-custom ${title === "about" ? "bg-zinc-700" : "bg-white"}`}
+    >
       <div className="w-full min-h-full mx-auto max-sm:pb-4">
         {title !== "about" && (
           <ProjectsContents data={ProjectContents[title]} />
