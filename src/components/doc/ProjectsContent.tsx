@@ -78,7 +78,7 @@ export default function ProjectsContent({
 
 function ProjectTitleLabel(title: AppTitle): string {
   const labels: Partial<Record<AppTitle, string>> = {
-    rlt: "뽑기?뽑기!",
+    rlt: "당첨?당첨!",
     "find-mat": "맛찾기",
   };
   return labels[title] ?? title;

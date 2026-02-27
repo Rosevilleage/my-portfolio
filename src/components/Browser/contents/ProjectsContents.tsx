@@ -42,19 +42,21 @@ export default function ProjectsContents({ data }: ProjectProps) {
   const part = data.isTeam ? "담당 기능" : "주요 기능";
   const isMobile = data.isMobile;
   const imageRef = useRef<null[] | HTMLDivElement[]>([]);
-  const hasExitedRef = useRef<boolean[]>([]);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   const [view, setView] = useState(() =>
     new Array(data.images.length).fill(false)
   );
 
   useEffect(() => {
-    hasExitedRef.current = new Array(data.images.length).fill(false);
+    const firstEl = imageRef.current.find(Boolean);
+    if (!firstEl) return;
 
-    const scrollRoot =
-      (containerRef.current?.closest(".scroll-custom") as HTMLElement | null) ??
-      null;
+    let scrollContainer: HTMLElement | null = firstEl.parentElement;
+    while (scrollContainer) {
+      const overflowY = window.getComputedStyle(scrollContainer).overflowY;
+      if (overflowY === "auto" || overflowY === "scroll") break;
+      scrollContainer = scrollContainer.parentElement;
+    }
 
     const observers: IntersectionObserver[] = [];
 
@@ -63,20 +65,16 @@ export default function ProjectsContents({ data }: ProjectProps) {
       const observer = new IntersectionObserver(
         (entries) => {
           const entry = entries[0];
-          if (entry.isIntersecting) {
-            if (hasExitedRef.current[i]) {
-              setView((prev) =>
-                prev.map((value, j) => (i === j ? true : value))
-              );
-            }
-          } else {
-            hasExitedRef.current[i] = true;
-            setView((prev) =>
-              prev.map((value, j) => (i === j ? false : value))
-            );
-          }
+          if (!entry.rootBounds) return;
+          const isVisible =
+            entry.isIntersecting &&
+            (entry.intersectionRatio >= 0.5 ||
+              entry.intersectionRect.height >= entry.rootBounds.height * 0.5);
+          setView((prev) =>
+            prev.map((value, j) => (i === j ? isVisible : value))
+          );
         },
-        { threshold: 0.5, root: scrollRoot }
+        { threshold: [0, 0.5], root: scrollContainer }
       );
       observer.observe(el);
       observers.push(observer);
@@ -85,11 +83,11 @@ export default function ProjectsContents({ data }: ProjectProps) {
     return () => {
       observers.forEach((observer) => observer.disconnect());
     };
-  }, [data.images.length]);
+  }, [imageRef]);
 
   return (
     <>
-      <div ref={containerRef} className="w-full p-8 min-h-[300px] mx-auto bg-zinc-700 text-white">
+      <div className="w-full p-8 min-h-[300px] mx-auto bg-zinc-700 text-white">
         <div className=" max-w-[1300px] w-full mx-auto">
           <h1 className="mb-2 text-3xl font-semibold">{data.name}</h1>
           <p className="mb-1 ml-1 font-semibold">{projecType}</p>

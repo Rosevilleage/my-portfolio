@@ -243,7 +243,7 @@ export const ProjectContents = {
   },
   rlt: {
     isTeam: true,
-    name: "뽑기?뽑기!",
+    name: "당첨?당첨!",
     images: [
       baseUrl + "rlt1.png",
       baseUrl + "rlt2.png",
