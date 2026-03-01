@@ -8,20 +8,21 @@ interface IntroProps {
   isFirst: boolean;
 }
 
+const TEXT = "jangchanhee's Portfolio";
+
 export default function Intro({ closeIntro, isFirst }: IntroProps) {
-  const text = "jangchanhee Portfolio";
   const [showText, setShowText] = useState("");
   const [count, setCount] = useState(0);
   const [isHover, setIsHover] = useState(false);
   const onMouseEnterHandler = () => setIsHover(true);
   const onMouseLeaveHandler = () => setIsHover(false);
   useInterval(() => {
-    if (count >= text.length) {
+    if (count >= TEXT.length) {
       return;
     }
 
     setShowText((prev) => {
-      let result = prev ? prev + text[count] : text[0];
+      let result = prev ? prev + TEXT[count] : TEXT[0];
       setCount((prev) => prev + 1);
       return result;
     });
