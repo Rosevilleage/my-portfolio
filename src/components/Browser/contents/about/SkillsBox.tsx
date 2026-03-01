@@ -1,22 +1,24 @@
 type SkillType =
-  | "javascript"
-  | "html"
-  | "css"
-  | "react"
-  | "styled-components"
-  | "redux-toolkit"
-  | "axios"
-  | "typescript";
+  | "JavaScript"
+  | "HTML"
+  | "CSS"
+  | "React"
+  | "Styled-components"
+  | "Redux Toolkit"
+  | "Axios"
+  | "TypeScript"
+  | "Tailwind CSS";
 
 const skillColor: Record<SkillType, string> = {
-  javascript: "bg-yellow-400",
-  html: "bg-orange-400",
-  css: "bg-blue-700",
-  typescript: "bg-sky-600",
-  react: "bg-cyan-400",
-  "styled-components": "bg-pink-400",
-  "redux-toolkit": "bg-purple-500",
-  axios: "bg-violet-400",
+  JavaScript: "bg-yellow-400",
+  HTML: "bg-orange-400",
+  CSS: "bg-blue-700",
+  TypeScript: "bg-sky-600",
+  React: "bg-cyan-400",
+  "Styled-components": "bg-pink-400",
+  "Redux Toolkit": "bg-purple-500",
+  Axios: "bg-violet-400",
+  "Tailwind CSS": "bg-teal-500",
 };
 
 export default function SkillsBox({ skills }: { skills: string[] }) {
