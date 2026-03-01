@@ -41,7 +41,7 @@ export default function ProjectsContents({ data }: ProjectProps) {
   const projecType = data.isTeam ? "팀 프로젝트" : "개인 프로젝트";
   const part = data.isTeam ? "담당 기능" : "주요 기능";
   const isMobile = data.isMobile;
-  const imageRef = useRef<null[] | HTMLDivElement[]>([]);
+  const imageRef = useRef<(HTMLDivElement | null)[]>([]);
 
   const [view, setView] = useState(() =>
     new Array(data.images.length).fill(false)
