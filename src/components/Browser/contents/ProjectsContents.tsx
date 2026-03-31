@@ -170,7 +170,12 @@ const markdownComponents = {
     </a>
   ),
   img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    <img {...props} className="my-4 max-w-full h-auto rounded-md" />
+    // eslint-disable-next-line @next/next/no-img-element -- MDX embeds arbitrary URLs
+    <img
+      {...props}
+      alt={props.alt ?? ""}
+      className="my-4 max-w-full h-auto rounded-md"
+    />
   ),
   table: ({ children }: { children: React.ReactNode }) => (
     <div className="overflow-x-auto mb-4">

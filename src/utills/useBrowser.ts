@@ -64,7 +64,7 @@ export default function useBrowser({
       });
       observer.observe(boundaryCur);
     }
-  }, [boundaryCur]);
+  }, [boundaryCur, dispatch, title]);
 
   const resizeHandler = (direction: Direction) => {
     return dragMouseDown((X, Y) => {

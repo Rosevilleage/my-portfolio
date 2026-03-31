@@ -106,4 +106,6 @@ const CustomImage = forwardRef(
   }
 );
 
+CustomImage.displayName = "CustomImage";
+
 export default CustomImage;
